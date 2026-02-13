@@ -1,0 +1,3350 @@
+<!DOCTYPE html>
+<!-- Versão: 2.0 - Com botões na tela fullscreen -->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0a141d">
+    <meta name="description" content="Remédio Espiritual Imediato - Combate aos pensamentos com a Verdade">
+    <link rel="canonical" href="https://antirretico.netlify.app/">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Antirrético">
+    <meta property="og:title" content="Antirrético - Remédio Espiritual Imediato">
+    <meta property="og:description" content="Remédio Espiritual Imediato - Combate aos pensamentos com a Verdade">
+    <meta property="og:url" content="https://antirretico.netlify.app/">
+    <meta property="og:image" content="https://antirretico.netlify.app/og-image.png">
+    <meta property="og:image:secure_url" content="https://antirretico.netlify.app/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="Antirrético (ícone dourado)">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antirrético - Remédio Espiritual Imediato">
+    <meta name="twitter:description" content="Remédio Espiritual Imediato - Combate aos pensamentos com a Verdade">
+    <meta name="twitter:image" content="https://antirretico.netlify.app/og-image.png">
+    <title>Antirrético - Remédio Espiritual Imediato</title>
+    <style>
+/* ============================================================
+   Antirrético — Remédio Espiritual Imediato
+   Estética editorial minimalista
+   Azul marinho #0a141d • Ouro envelhecido #b8952e • Pergaminho #fdfdfd
+   ============================================================ */
+
+:root {
+  --navy: #0a141d;
+  --gold: #b8952e;
+  --paper: #fdfdfd;
+  --paper-soft: #f7f4ee;
+  --ink: #0a141d;
+  --muted: rgba(10, 20, 29, 0.62);
+  --border: rgba(10, 20, 29, 0.14);
+  --shadow: 0 1px 2px rgba(10, 20, 29, 0.08);
+  --radius: 4px;
+  /* compatibilidade com o JS existente */
+  --accent: var(--gold);
+  --logismoi: var(--gold);
+  --emergency: #7b1b1b;
+  /* default; JS sincroniza com a altura real do header */
+  --header-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- App Shell ---- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ---- Header (fixo) ---- */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding-top: max(24px, calc(16px + env(safe-area-inset-top)));
+  padding-left: max(18px, env(safe-area-inset-left));
+  padding-right: max(18px, env(safe-area-inset-right));
+  padding-bottom: 20px;
+}
+
+.title-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 8vw, 3.8rem);
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.app-header .subtitle {
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  color: var(--gold);
+  margin: 6px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Mobile: header e conteúdo compactos para caber em uma tela */
+@media (max-width: 768px) {
+  .app-header {
+    padding-top: max(14px, calc(10px + env(safe-area-inset-top)));
+    padding-bottom: 10px;
+  }
+  
+  .title-wrapper {
+    gap: 6px;
+  }
+  
+  .app-header h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  .app-header .subtitle {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    margin: 2px 0 0;
+  }
+  
+  .header-actions {
+    margin-top: 6px;
+    gap: 6px;
+  }
+  
+  .header-btn-favoritas {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+  
+  .info-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8rem;
+  }
+}
+
+.info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.info-icon:active {
+  background: rgba(10, 20, 29, 0.04);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header-btn-favoritas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid rgba(184, 149, 46, 0.5);
+  background: rgba(184, 149, 46, 0.12);
+  color: var(--gold);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.header-btn-favoritas:hover {
+  background: rgba(184, 149, 46, 0.2);
+  border-color: var(--gold);
+}
+
+.header-btn-favoritas:active {
+  background: rgba(184, 149, 46, 0.25);
+}
+
+.header-favoritas-icon {
+  font-size: 1rem;
+}
+
+.header-favoritas-texto {
+  white-space: nowrap;
+}
+
+.favoritos-icon {
+  color: var(--gold);
+  font-size: 1.1rem;
+  border-color: rgba(184, 149, 46, 0.4);
+  background: rgba(184, 149, 46, 0.08);
+}
+
+.favoritos-icon:hover {
+  background: rgba(184, 149, 46, 0.15);
+  border-color: rgba(184, 149, 46, 0.6);
+}
+
+.favoritos-icon:active {
+  background: rgba(184, 149, 46, 0.2);
+}
+
+/* ---- Área principal ---- */
+.app-main {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-top: var(--header-height);
+  padding-left: max(18px, env(safe-area-inset-left));
+  padding-right: max(18px, env(safe-area-inset-right));
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 26px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 14px 0 16px;
+    gap: 10px;
+  }
+}
+
+/* ---- Tabs (navegação editorial) ---- */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  min-height: 44px;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+
+/* ---- Display / Cartão de frase (oculto no novo design) ---- */
+#display-remedio {
+  display: none;
+}
+
+/* ---- Tela Fullscreen de Frase ---- */
+#fullscreen-frase {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  -webkit-tap-highlight-color: transparent;
+  overflow-y: auto;
+}
+
+#fullscreen-frase.active {
+  display: flex;
+}
+
+#fullscreen-frase .frase-fullscreen {
+  width: 100%;
+  max-width: 680px;
+  padding: 40px 24px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#fullscreen-frase .frase-fullscreen .frase {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+#fullscreen-frase .frase-fullscreen .referencia {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  margin-top: 20px;
+  opacity: 0.85;
+}
+
+#fullscreen-frase .frase-fullscreen .categoria-label {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  padding: 8px 14px;
+  border: 1px solid rgba(184, 149, 46, 0.3);
+  border-radius: var(--radius);
+}
+
+#fullscreen-frase .frase-fullscreen .explicacao-mapeamento {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  padding: 0 4px;
+}
+
+#fullscreen-frase .frase-fullscreen {
+  cursor: default; /* Não clicável, só os botões são clicáveis */
+}
+
+#fullscreen-frase .frase-fullscreen .frase,
+#fullscreen-frase .frase-fullscreen .referencia {
+  pointer-events: none; /* Texto não é clicável */
+}
+
+/* Botões de ação na tela fullscreen */
+.fullscreen-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 32px auto 0;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+}
+
+.btn-fullscreen {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  min-height: 48px;
+  padding: 14px 20px;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+  pointer-events: auto;
+}
+
+.btn-fullscreen:active {
+  background: var(--paper-soft);
+  transform: scale(0.98);
+}
+
+.btn-fullscreen.btn-primary {
+  background: var(--navy);
+  color: var(--paper);
+  border-color: rgba(184, 149, 46, 0.3);
+}
+
+.btn-fullscreen.btn-primary:active {
+  background: #061017;
+}
+
+.btn-fullscreen:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-fullscreen.btn-secondary {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.btn-fullscreen.btn-secondary:active {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.btn-fullscreen.btn-favorite {
+  background: linear-gradient(135deg, rgba(184, 149, 46, 0.15), rgba(184, 149, 46, 0.05));
+  color: var(--gold);
+  border-color: rgba(184, 149, 46, 0.3);
+  font-weight: 600;
+}
+
+.btn-fullscreen.btn-favorite:active {
+  background: linear-gradient(135deg, rgba(184, 149, 46, 0.25), rgba(184, 149, 46, 0.15));
+}
+
+.btn-fullscreen.btn-favorite.guardada {
+  background: linear-gradient(135deg, rgba(184, 149, 46, 0.3), rgba(184, 149, 46, 0.2));
+  color: var(--gold);
+}
+
+.btn-fullscreen.btn-favorite.guardada::before {
+  content: "✓ ";
+}
+
+.aviso-citacao {
+  margin: 24px auto 0;
+  max-width: 400px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  line-height: 1.45;
+  padding: 0 12px;
+}
+
+.btn-reportar-frase {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-family: Inter, system-ui, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.btn-reportar-frase:hover {
+  color: var(--ink);
+}
+
+.frase {
+  margin: 0 0 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.frase-placeholder {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.referencia {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ---- Campo de Busca / Texto ---- */
+.search-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#search-input {
+  width: 100%;
+  min-height: 80px;
+  max-height: 200px;
+  padding: 16px 18px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color 0.2s ease, min-height 0.2s ease;
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+@media (max-width: 768px) {
+  #search-input {
+    min-height: 56px;
+    max-height: 120px;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+  
+  #search-input:focus {
+    min-height: 60px;
+    max-height: 100px;
+  }
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+#search-input::placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Botão acima da caixa de texto */
+.search-button {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 0 14px 0;
+  min-height: 52px;
+  padding: 14px 20px;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--navy);
+  color: var(--paper);
+  border: 1px solid rgba(184, 149, 46, 0.3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  position: relative;
+  z-index: 10;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .search-button {
+    min-height: 46px;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+  }
+  
+  .search-container {
+    margin-bottom: 8px;
+  }
+  
+  .cta-box {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+}
+
+.search-button:active {
+  background: #061017;
+  transform: scale(0.98);
+}
+
+.search-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Link "Ver frases guardadas" logo abaixo do botão de busca */
+.link-favoritas {
+  appearance: none;
+  border: none;
+  background: none;
+  color: var(--gold);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px 12px;
+}
+
+.link-favoritas:hover {
+  color: var(--navy);
+}
+
+.link-favoritas:active {
+  opacity: 0.8;
+}
+
+/* Botão "Ver Frases Guardadas" na caixa */
+.btn-favoritas {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  border: none !important;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-favoritas:hover {
+  background: #a68b2e !important;
+  color: var(--navy) !important;
+}
+
+.cta-favoritas {
+  border-top: 2px solid var(--gold);
+}
+
+/* Dropdown de Sugestões */
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(10, 20, 29, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+
+.suggestions-dropdown.active {
+  display: block;
+}
+
+.suggestion-item {
+  padding: 14px 18px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item:active {
+  background: var(--paper-soft);
+}
+
+.suggestion-item.highlight {
+  background: var(--paper-soft);
+  font-weight: 600;
+}
+
+.suggestion-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 8px 18px;
+  background: var(--paper-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Ocultar grid antigo */
+.grid-buttons {
+  display: none;
+}
+
+.tab-container {
+  display: none;
+}
+
+.btn-item {
+  appearance: none;
+  border: 1px solid rgba(184, 149, 46, 0.28);
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: var(--radius);
+  min-height: 52px;
+  padding: 14px 12px;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.btn-item:active {
+  background: #061017;
+  transform: scale(0.98);
+}
+
+.btn-emergencia {
+  grid-column: span 2;
+  border-color: rgba(184, 149, 46, 0.5);
+  background: var(--emergency);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 560px) {
+  .btn-emergencia {
+    grid-column: span 1;
+  }
+}
+
+/* ---- CTA / Links ---- */
+.cta-box {
+  background: var(--paper-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  text-align: center;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .cta-box {
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+}
+
+.cta-text {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 12px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .cta-text {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+}
+
+.btn-link-wa {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+/* WhatsApp: outline elegante (verde apenas no texto/borda) */
+.bg-whatsapp {
+  border-color: rgba(30, 120, 90, 0.55);
+  color: #1e785a;
+}
+
+/* Sugestão: harmoniza com ouro */
+.bg-suggest {
+  border-color: rgba(184, 149, 46, 0.65);
+  color: var(--gold);
+}
+
+footer {
+  text-align: center;
+  padding: 14px 8px 2px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 8px 8px 2px;
+    font-size: 0.7rem;
+  }
+  
+  .btn-link-wa {
+    min-height: 40px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ---- Splash ---- */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+#splash.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease-out, visibility 0.22s ease-out;
+}
+
+#splash .splash-cross {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 2.4rem;
+  margin: 0 0 14px;
+}
+
+#splash .splash-title {
+  width: 90%;
+  max-width: 520px;
+  text-align: center;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.2rem, 5.6vw, 1.8rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+#splash .splash-accent {
+  width: 64px;
+  height: 2px;
+  background: var(--gold);
+  margin: 18px 0 0;
+}
+
+/* ---- Modal ---- */
+#modal-info,
+#modal-favoritas {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 29, 0.62);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  padding: 22px;
+  overflow-y: auto;
+}
+
+#modal-favoritas.active {
+  display: flex;
+}
+
+.favoritas-content {
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.favorita-item {
+  background: var(--paper-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.favorita-item:hover {
+  background: rgba(184, 149, 46, 0.05);
+}
+
+.favorita-item:active {
+  transform: scale(0.98);
+}
+
+.favorita-frase {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.favorita-referencia {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.favorita-categoria {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.favorita-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-remover-favorita {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-remover-favorita:hover {
+  border-color: #c53030;
+  color: #c53030;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 22px 18px 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.modal-title {
+  margin: 0 0 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.modal-content p {
+  margin: 0 0 10px;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.ajuda-text {
+  grid-column: span 2;
+  text-align: left;
+}
+
+.ajuda-description {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+/* ---- Motion: leve e respeitoso ---- */
+.fade-in {
+  animation: fadeIn 120ms ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.01; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+  #splash.splash-hidden { transition: none !important; }
+  .fade-in { animation: none !important; }
+}
+
+@media (min-width: 560px) {
+  .app-header h1 { font-size: 1.28rem; }
+  .frase { font-size: 1.55rem; }
+  #display-remedio { padding: 30px 22px; }
+  #fullscreen-frase .frase-fullscreen {
+    padding: 60px 40px;
+  }
+}
+
+/* Animação suave para fullscreen */
+#fullscreen-frase {
+  animation: fadeInFullscreen 0.25s ease-out;
+}
+
+@keyframes fadeInFullscreen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- Tela de Introdução / Onboarding ---- */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--paper);
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+}
+
+#intro-overlay.active {
+  display: flex;
+}
+
+.intro-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 40px 24px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.intro-slide.active {
+  display: flex;
+}
+
+.intro-slide h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 24px;
+  line-height: 1.3;
+}
+
+.intro-slide .subtitle {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.intro-slide .content {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.intro-slide .content strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.intro-slide .content ol,
+.intro-slide .content ul {
+  text-align: left;
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+.intro-slide .content li {
+  margin-bottom: 12px;
+}
+
+.intro-slide .icon {
+  font-size: 3rem;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.intro-nav {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.intro-nav button {
+  flex: 1;
+  min-height: 48px;
+  padding: 14px 20px;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.intro-nav .btn-primary {
+  background: var(--navy);
+  color: var(--paper);
+  border-color: rgba(184, 149, 46, 0.3);
+}
+
+.intro-nav .btn-primary:active {
+  background: #061017;
+  transform: scale(0.98);
+}
+
+.intro-nav .btn-secondary {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.intro-nav .btn-secondary:active {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.intro-skip-btn {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  z-index: 2001;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: Inter, system-ui, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.intro-skip-btn:hover,
+.intro-skip-btn:active {
+  color: var(--ink);
+  background: var(--paper-soft);
+  border-color: var(--gold);
+}
+
+.intro-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.intro-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s ease;
+}
+
+.intro-dot.active {
+  background: var(--gold);
+}
+
+.intro-slide .highlight-box {
+  background: var(--paper-soft);
+  border-left: 3px solid var(--gold);
+  padding: 16px 18px;
+  margin: 20px 0;
+  text-align: left;
+  border-radius: var(--radius);
+}
+
+.intro-slide .highlight-box strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+    </style>
+</head>
+<body class="app-shell">
+
+<div id="splash">
+    <div class="splash-cross" aria-hidden="true">✝</div>
+    <p class="splash-title">ANTIRRÉTICO</p>
+    <div class="splash-accent"></div>
+</div>
+
+<!-- Tela de Introdução -->
+<div id="intro-overlay">
+    <!-- Botão fixo para pular introdução -->
+    <button class="intro-skip-btn" onclick="pularIntro()" title="Pular introdução">
+        Pular introdução
+    </button>
+    
+    <!-- Slide 1: Boas-vindas -->
+    <div class="intro-slide active" id="intro-slide-1">
+        <div class="icon">✝</div>
+        <h2>Bem-vindo ao Antirrético</h2>
+        <p class="subtitle">Remédio Espiritual Imediato</p>
+        <div class="content">
+            <p>Este aplicativo oferece uma abordagem diferente para lidar com pensamentos difíceis, inspirada nos Padres do Deserto e em Jesus.</p>
+        </div>
+        <div class="intro-nav">
+            <button class="btn-primary" onclick="proximoSlide()">Entender como funciona</button>
+        </div>
+    </div>
+
+    <!-- Slide 2: O Problema -->
+    <div class="intro-slide" id="intro-slide-2">
+        <h2>Como você lida com pensamentos difíceis?</h2>
+        <div class="content">
+            <p>A Terapia Cognitivo-Comportamental e outras linhas psicológicas atuais buscam entender a origem dos pensamentos:</p>
+            <ul>
+                <li>"De onde vem isso?"</li>
+                <li>"Que crença está por trás?"</li>
+                <li>"Que ferida causou isso?"</li>
+            </ul>
+            <p>Essa busca pela origem pode ser útil, mas também pode nos fazer ficar presos em análises infinitas...</p>
+        </div>
+        <div class="intro-nav">
+            <button class="btn-secondary" onclick="slideAnterior()">Anterior</button>
+            <button class="btn-primary" onclick="proximoSlide()">Próximo</button>
+        </div>
+    </div>
+
+    <!-- Slide 3: A Diferença -->
+    <div class="intro-slide" id="intro-slide-3">
+        <h2>Os Padres do Deserto tinham outra abordagem</h2>
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Inspirados em Jesus</strong>
+                <p>Eles não buscavam a origem. Eles combatiam o pensamento diretamente com a Verdade — versículos bíblicos, frases dos santos, orações.</p>
+            </div>
+            <p><strong>Antirrhesis</strong>: responder ao pensamento com a Palavra de Deus.</p>
+            <p>Não dialogar com o pensamento. Não buscar sua origem. Combater com a Verdade.</p>
+        </div>
+        <div class="intro-nav">
+            <button class="btn-secondary" onclick="slideAnterior()">Anterior</button>
+            <button class="btn-primary" onclick="proximoSlide()">Próximo</button>
+        </div>
+    </div>
+
+    <!-- Slide 4: Como Funciona -->
+    <div class="intro-slide" id="intro-slide-4">
+        <h2>Como o Antirrético funciona</h2>
+        <div class="content">
+            <ol>
+                <li><strong>Identifique</strong> o pensamento ou sentimento que está te atacando</li>
+                <li><strong>Receba</strong> uma resposta espiritual imediata (versículo, frase de santo)</li>
+                <li><strong>Não dialogue</strong> — apenas receba o remédio</li>
+                <li><strong>Se precisar</strong>, peça outra frase para o mesmo sentimento</li>
+            </ol>
+            <p>Simples, direto, eficaz.</p>
+        </div>
+        <div class="intro-nav">
+            <button class="btn-secondary" onclick="slideAnterior()">Anterior</button>
+            <button class="btn-primary" onclick="finalizarIntro()">Começar a usar</button>
+        </div>
+    </div>
+
+    <!-- Indicadores de progresso -->
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+</div>
+
+<header class="app-header">
+    <div class="title-wrapper">
+        <h1>Antirrético</h1>
+        <p class="subtitle">Remédio Espiritual Imediato</p>
+        <div class="header-actions">
+            <div class="info-icon" onclick="toggleModal()" title="Sobre o Antirrético">i</div>
+            <button type="button" class="header-btn-favoritas" onclick="mostrarFavoritas()" title="Ver frases guardadas" id="btn-favoritos">
+                <span class="header-favoritas-icon">⭐</span>
+                <span class="header-favoritas-texto">Frases guardadas</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="app-main">
+<div class="container">
+    <!-- Botão em cima, depois caixa de texto centralizada -->
+    <div class="search-container">
+        <button class="search-button" id="search-button" onclick="buscarRemedio()">
+            Buscar Remédio Espiritual
+        </button>
+        <div class="search-input-wrapper">
+            <textarea 
+                id="search-input" 
+                placeholder="Como você está se sentindo? Escreva ou toque para sugestões."
+                rows="2"
+            ></textarea>
+            <div class="suggestions-dropdown" id="suggestions-dropdown">
+                <div class="suggestion-label">Sugestões</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('ansiedade')">Ansiedade</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('depressao')">Depressão</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('tristeza')">Tristeza</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('solidão')">Solidão</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('inutilidade')">Inutilidade</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('angustia')">Angústia</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('escrupulosidade')">Escrupulosidade</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('culpa')">Culpa</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('soberba')">Soberba</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('avareza')">Avareza</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('luxuria')">Luxúria</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('inveja')">Inveja</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('gula')">Gula</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('ira')">Ira</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('acidia')">Acídia</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('telas')">Vício em Telas</div>
+                <div class="suggestion-item" onclick="selecionarSugestao('emergencia')">EMERGÊNCIA</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-box">
+        <span class="cta-text">Direção Espiritual: <strong>Fale com Prof. Thácio</strong> (15 anos monge)</span>
+        <a href="https://api.whatsapp.com/send?phone=5561996449753&text=A%20paz%20de%20Cristo!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Direção%20Espiritual." class="btn-link-wa bg-whatsapp" target="_blank">Falar com Prof. Thácio</a>
+    </div>
+
+    <footer>© 2026 • thaciosiqueira.com.br</footer>
+</div>
+</main>
+
+<!-- Tela Fullscreen de Frase -->
+<div id="fullscreen-frase">
+    <div class="frase-fullscreen" onclick="event.stopPropagation()">
+        <div class="categoria-label" id="categoria-label-fullscreen"></div>
+        <div id="conteudo-frase-fullscreen">
+            <p class="frase frase-placeholder">Carregando...</p>
+        </div>
+        <div class="fullscreen-actions">
+            <button class="btn-fullscreen btn-favorite" id="btn-guardar-frase" onclick="guardarFrase()" style="display: none;">
+                ⭐ Guardar esta frase
+            </button>
+            <button class="btn-fullscreen btn-primary" id="btn-gerar-outra" onclick="gerarOutraFrase()">
+                Gerar outra frase para este sentimento
+            </button>
+            <button class="btn-fullscreen btn-secondary" onclick="voltarParaLista()">
+                Escolher outro sentimento
+            </button>
+        </div>
+        <p class="aviso-citacao">A citação pode não ser literal; o que vale aqui é a verdade que ela transmite.</p>
+        <a id="btn-reportar-frase" class="btn-reportar-frase" href="#" target="_blank" rel="noopener">Reportar frase inadequada</a>
+    </div>
+</div>
+
+<div id="modal-info" onclick="toggleModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="toggleModal()">&times;</span>
+        <h3 class="modal-title">O que é Antirrético?</h3>
+        <div style="margin-bottom: 24px;">
+            <p><strong>Antirrhesis</strong> (do grego: "responder", "contra-argumentar") é uma prática espiritual dos Padres do Deserto, inspirada em Jesus.</p>
+            <p>Diferente das terapias modernas que buscam entender a <strong>origem</strong> dos pensamentos, o antirrético <strong>combate diretamente</strong> o pensamento com a Verdade — versículos bíblicos, frases dos santos, orações.</p>
+            <p style="margin-top: 12px; padding: 12px; background: var(--paper-soft); border-left: 3px solid var(--gold); border-radius: var(--radius);">
+                <strong>Não dialogar</strong> com o pensamento. <strong>Não buscar</strong> sua origem. <strong>Combater</strong> com a Palavra de Deus.
+            </p>
+        </div>
+        
+        <h3 class="modal-title" style="margin-top: 28px; margin-bottom: 12px;">Dicas de Ascese</h3>
+        <p><strong>1. Silêncio:</strong> Reconheça o ataque sem dialogar com ele.</p>
+        <p><strong>2. Proclamação:</strong> Leia a frase em voz alta para dissipar a mentira.</p>
+        <p><strong>3. Repetição:</strong> Use a frase como uma jaculatória (mantra).</p>
+        <p><strong>4. Agere Contra:</strong> Corte o estímulo externo imediatamente.</p>
+    </div>
+</div>
+
+<!-- Modal de Frases Guardadas -->
+<div id="modal-favoritas" onclick="fecharFavoritas()">
+    <div class="modal-content favoritas-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="fecharFavoritas()">&times;</span>
+        <h3 class="modal-title">⭐ Frases Guardadas</h3>
+        <div id="lista-favoritas" style="max-height: 60vh; overflow-y: auto; margin-top: 20px;">
+            <p style="color: var(--muted); font-style: italic; text-align: center; padding: 40px 20px;">
+                Nenhuma frase guardada ainda.<br>
+                Guarde frases que tocaram seu coração usando o botão ⭐ na tela de frase.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function syncHeaderHeight() {
+        var header = document.querySelector('.app-header');
+        if (!header) return;
+        var h = Math.ceil(header.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--header-height', h + 'px');
+    }
+
+    (function() {
+        var splash = document.getElementById('splash');
+        function hideSplash() {
+            if (splash) splash.classList.add('splash-hidden');
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                syncHeaderHeight();
+                setTimeout(syncHeaderHeight, 50);
+                setTimeout(hideSplash, 1500);
+            });
+        } else {
+            syncHeaderHeight();
+            setTimeout(syncHeaderHeight, 50);
+            setTimeout(hideSplash, 1500);
+        }
+    })();
+
+    window.addEventListener('resize', syncHeaderHeight);
+    
+    // Recalcula altura do header quando o teclado virtual aparece/desaparece (mobile)
+    let viewportHeight = window.innerHeight;
+    window.addEventListener('resize', function() {
+        const newViewportHeight = window.innerHeight;
+        if (Math.abs(newViewportHeight - viewportHeight) > 150) {
+            // Mudança significativa na altura (teclado virtual)
+            syncHeaderHeight();
+            viewportHeight = newViewportHeight;
+        }
+    });
+    
+    // Também recalcula quando o input recebe/perde foco (mobile)
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('focus', function() {
+            setTimeout(syncHeaderHeight, 300); // Aguarda teclado aparecer
+        });
+        searchInput.addEventListener('blur', function() {
+            setTimeout(syncHeaderHeight, 300); // Aguarda teclado desaparecer
+        });
+    }
+
+    // ===== Sistema de Introdução / Onboarding =====
+    let slideAtual = 1;
+    const totalSlides = 4;
+
+    function mostrarIntro() {
+        const introOverlay = document.getElementById('intro-overlay');
+        if (introOverlay) {
+            slideAtual = 1; // Reseta para o primeiro slide
+            atualizarSlides();
+            introOverlay.classList.add('active');
+            atualizarDots();
+        }
+    }
+
+    function esconderIntro() {
+        const introOverlay = document.getElementById('intro-overlay');
+        if (introOverlay) {
+            introOverlay.classList.remove('active');
+        }
+        // Salva que o usuário já viu a introdução
+        localStorage.setItem('intro_vista', 'true');
+    }
+
+    function proximoSlide() {
+        if (slideAtual < totalSlides) {
+            slideAtual++;
+            atualizarSlides();
+            atualizarDots();
+        } else {
+            finalizarIntro();
+        }
+    }
+
+    function slideAnterior() {
+        if (slideAtual > 1) {
+            slideAtual--;
+            atualizarSlides();
+            atualizarDots();
+        }
+    }
+
+    function atualizarSlides() {
+        for (let i = 1; i <= totalSlides; i++) {
+            const slide = document.getElementById(`intro-slide-${i}`);
+            if (slide) {
+                if (i === slideAtual) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            }
+        }
+    }
+
+    function atualizarDots() {
+        const dots = document.querySelectorAll('.intro-dot');
+        dots.forEach((dot, index) => {
+            if (index + 1 === slideAtual) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function pularIntro() {
+        esconderIntro();
+    }
+
+    function finalizarIntro() {
+        esconderIntro();
+    }
+    
+    // Função de debug: permite resetar a introdução (útil para testes)
+    // Use no console: resetarIntro()
+    window.resetarIntro = function() {
+        localStorage.removeItem('intro_vista');
+        mostrarIntro();
+    };
+
+    // Verifica se deve mostrar a introdução
+    (function() {
+        // Aguarda o DOM estar pronto
+        function initIntro() {
+            const introVista = localStorage.getItem('intro_vista');
+            if (!introVista) {
+                // Espera o splash desaparecer (1500ms) + um pouco mais
+                setTimeout(() => {
+                    mostrarIntro();
+                }, 1800);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initIntro);
+        } else {
+            initIntro();
+        }
+    })();
+
+    // [BIBLIOTECA – revisada: Escritura, Tradição e santos]
+    const BIBLIOTECA = {
+        "soberba": [
+            ["Aprendei de mim, que sou manso e humilde de coração; e achareis repouso para as vossas almas.", "Mt 11,29"],
+            ["Deus resiste aos soberbos, mas dá a graça aos humildes.", "Tg 4,6"],
+            ["Que tens tu que não tenhas recebido? E, se o recebeste, por que te glorias, como se o não tivesses recebido?", "1 Cor 4,7"],
+            ["Quem se exalta será humilhado; e quem se humilha será exaltado.", "Mt 23,12"],
+            ["Sem mim nada podeis fazer.", "Jo 15,5"],
+            ["A soberba precede a ruína, e a altivez do espírito, a queda.", "Pr 16,18"],
+            ["Não a nós, Senhor, não a nós, mas ao vosso nome dai glória, por vossa misericórdia e por vossa verdade.", "Sl 113(115),1"],
+            ["Minha alma engrandece o Senhor.", "Lc 1,46"],
+            ["Se alguém quer ser o primeiro, será o último de todos e o servo de todos.", "Mc 9,35"],
+            ["Humilhai-vos, pois, debaixo da poderosa mão de Deus, para que, a seu tempo, vos exalte.", "1 Pd 5,6"],
+            ["O Senhor é sublime, e olha para as coisas humildes; e de longe conhece o soberbo.", "Sl 137(138),6"],
+            ["Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso.", "Jaculatória tradicional"],
+            ["Senhor, livrai-me de desejar ser estimado; dai-me amar o ocultamento e a humildade.", "Ladainha da Humildade"],
+            ["Quem se gloria, glorie-se no Senhor.", "2 Cor 10,17"]
+        ],
+
+        "avareza": [
+            ["Porque onde estiver o teu tesouro, aí estará também o teu coração.", "Mt 6,21"],
+            ["Ninguém pode servir a dois senhores; porque ou há de odiar a um e amar o outro, ou há de dedicar-se a um e desprezar o outro. Não podeis servir a Deus e às riquezas.", "Mt 6,24"],
+            ["Guardai-vos cuidadosamente de toda avareza; porque a vida de um homem não consiste na abundância dos bens que possui.", "Lc 12,15"],
+            ["Ajuntai para vós tesouros no céu, onde nem a traça nem a ferrugem os consomem, e onde os ladrões não os arrombam nem roubam.", "Mt 6,20"],
+            ["Buscai primeiro o reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas.", "Mt 6,33"],
+            ["Tende vossa conversação sem avareza, contentando-vos com o que tendes; porque Ele disse: Não te deixarei, nem te desampararei.", "Hb 13,5"],
+            ["Dai, e dar-se-vos-á: boa medida, recalcada, sacudida e transbordante vos deitarão no regaço.", "Lc 6,38"],
+            ["Não ajunteis tesouros na terra, onde a traça e a ferrugem os consomem, e onde os ladrões minam e roubam.", "Mt 6,19"],
+            ["Nu saí do ventre de minha mãe, e nu tornarei para lá; o Senhor o deu, o Senhor o tirou; bendito seja o nome do Senhor.", "Jó 1,21"],
+            ["O amor ao dinheiro é a raiz de todos os males; e, cobiçando-o alguns, se extraviaram da fé e se traspassaram a si mesmos com muitas dores.", "1 Tm 6,10"],
+            ["Senhor, sois a minha porção e o meu cálice; nas vossas mãos está a minha sorte.", "Sl 15(16),5"],
+            ["A avareza é idolatria.", "Cl 3,5"]
+        ],
+
+        "luxuria": [
+            ["Esta é a vontade de Deus: a vossa santificação; que vos abstenhais da impureza.", "1 Ts 4,3"],
+            ["Fugi da fornicação. Todo pecado que o homem comete é fora do corpo; mas o que fornica peca contra o próprio corpo.", "1 Cor 6,18"],
+            ["Ou não sabeis que o vosso corpo é templo do Espírito Santo, que habita em vós, o qual recebestes de Deus, e que não sois de vós mesmos?", "1 Cor 6,19"],
+            ["Porque fostes comprados por grande preço. Glorificai, pois, a Deus no vosso corpo.", "1 Cor 6,20"],
+            ["Bem-aventurados os limpos de coração, porque verão a Deus.", "Mt 5,8"],
+            ["Fugi das paixões da mocidade; segui a justiça, a fé, a caridade e a paz.", "2 Tm 2,22"],
+            ["Vigiai e orai, para que não entreis em tentação; o espírito está pronto, mas a carne é fraca.", "Mt 26,41"],
+            ["Criai em mim, ó Deus, um coração puro e renovai em minhas entranhas um espírito reto.", "Sl 50(51),12"],
+            ["São José, castíssimo esposo da Virgem Maria, rogai por nós.", "Ladainha de S. José"],
+            ["Jesus, Maria e José, guardai a minha alma e o meu corpo.", "Invocação tradicional"]
+        ],
+
+        "inveja": [
+            ["A caridade é paciente, é benigna; a caridade não é invejosa, não trata com leviandade, não se ensoberbece.", "1 Cor 13,4"],
+            ["Alegrai-vos com os que se alegram; chorai com os que choram.", "Rm 12,15"],
+            ["Onde há inveja e espírito de contenda, aí há perturbação e toda obra perversa.", "Tg 3,16"],
+            ["Pela inveja do demônio entrou a morte no mundo; e provam-na os que pertencem à sua parte.", "Sb 2,24"],
+            ["Não nos façamos cobiçosos de vanglória, provocando-nos uns aos outros, invejando-nos uns aos outros.", "Gl 5,26"],
+            ["Dai-me, Senhor, alegrar-me com o bem do meu irmão e bendizer-vos por vossos dons.", "Oração"],
+            ["A inveja é tristeza do bem alheio.", "S. Tomás de Aquino (definição clássica)"]
+        ],
+
+        "gula": [
+            ["Nem só de pão vive o homem, mas de toda palavra que sai da boca de Deus.", "Mt 4,4"],
+            ["Acautelai-vos, porém, para que nunca aconteça que os vossos corações se carreguem de glutonaria e de embriaguez e dos cuidados desta vida.", "Lc 21,34"],
+            ["Quer comais, quer bebais, ou façais outra coisa qualquer, fazei tudo para glória de Deus.", "1 Cor 10,31"],
+            ["O reino de Deus não é comida nem bebida, mas justiça, e paz, e alegria no Espírito Santo.", "Rm 14,17"],
+            ["Jejuai, pois, sem tristeza; e o vosso Pai, que vê no secreto, vos recompensará.", "Mt 6,16-18"],
+            ["A temperança é fruto do Espírito.", "Gl 5,22-23"],
+            ["Senhor, dai-me sobriedade e gratidão em tudo o que recebo de vossas mãos.", "Oração"]
+        ],
+
+        "ira": [
+            ["A resposta branda quebra a ira, mas a palavra dura suscita o furor.", "Pr 15,1"],
+            ["Irai-vos, e não pequeis; não se ponha o sol sobre a vossa ira.", "Ef 4,26"],
+            ["A ira do homem não cumpre a justiça de Deus.", "Tg 1,20"],
+            ["Sede benignos uns para com os outros, misericordiosos, perdoando-vos uns aos outros, como também Deus vos perdoou em Cristo.", "Ef 4,32"],
+            ["Vence o mal com o bem.", "Rm 12,21"],
+            ["Pai, perdoai-lhes, porque não sabem o que fazem.", "Lc 23,34"],
+            ["Senhor, ponde uma guarda à minha boca; guardai a porta de meus lábios.", "Sl 140(141),3"],
+            ["Jesus, fazei o meu coração pacífico e manso.", "Oração"]
+        ],
+
+        "acidia": [
+            ["Não sejais vagarosos no cuidado; sede fervorosos de espírito, servindo ao Senhor.", "Rm 12,11"],
+            ["Tudo o que fizerdes, fazei-o de coração, como ao Senhor e não aos homens.", "Cl 3,23"],
+            ["Não nos cansemos de fazer o bem, porque a seu tempo ceifaremos, se não desfalecermos.", "Gl 6,9"],
+            ["Trabalhai enquanto é dia; vem a noite, em que ninguém pode trabalhar.", "Jo 9,4"],
+            ["Levanta-te, toma o teu leito e anda.", "Jo 5,8"],
+            ["A ociosidade é inimiga da alma.", "Regra de S. Bento, c. 48"],
+            ["Senhor, acendei em mim o zelo pela vossa glória e pela minha salvação.", "Oração"]
+        ],
+
+        "telas": [
+            ["Fiz aliança com os meus olhos; como, pois, fixaria eu o olhar numa virgem?", "Jó 31,1"],
+            ["Desviai os meus olhos para que não vejam a vaidade; vivificai-me no vosso caminho.", "Sl 118(119),37"],
+            ["A lâmpada do corpo é o olho. Se o teu olho for simples, todo o teu corpo será luminoso; mas, se o teu olho for mau, todo o teu corpo ficará tenebroso.", "Mt 6,22-23"],
+            ["Vigiai e orai, para que não entreis em tentação; o espírito está pronto, mas a carne é fraca.", "Mt 26,41"],
+            ["Sede sóbrios e vigiai; porque o vosso adversário, o demônio, como leão que ruge, anda em derredor, buscando a quem devorar.", "1 Pd 5,8"],
+            ["Vede, pois, com diligência como andais: não como néscios, mas como sábios, remindo o tempo, porque os dias são maus.", "Ef 5,15-16"],
+            ["Tudo o que é verdadeiro, tudo o que é honesto, tudo o que é justo, tudo o que é puro, tudo o que é amável, tudo o que é de boa fama, se há alguma virtude e se há algum louvor, nisso pensai.", "Fl 4,8"],
+            ["Ponde as vossas afeições nas coisas que são de cima, e não nas que são da terra.", "Cl 3,2"],
+            ["Não ameis o mundo, nem o que no mundo há. Se alguém ama o mundo, o amor do Pai não está nele.", "1 Jo 2,15"],
+            ["Tudo me é lícito, mas nem tudo convém; tudo me é lícito, mas eu não me deixarei dominar por coisa alguma.", "1 Cor 6,12"],
+            ["Tudo é lícito, mas nem tudo convém; tudo é lícito, mas nem tudo edifica.", "1 Cor 10,23"],
+            ["Guardai o vosso coração com toda a vigilância, porque dele procedem as fontes da vida.", "Pr 4,23"],
+            ["Se o teu olho direito te escandaliza, arranca-o e lança-o para longe de ti.", "Mt 5,29"],
+            ["Se o teu olho te escandaliza, lança-o fora; melhor te é entrar no reino de Deus com um só olho, do que, tendo dois olhos, seres lançado no fogo do inferno.", "Mc 9,47"],
+            ["Não vos conformeis com este mundo, mas transformai-vos pela renovação da vossa mente.", "Rm 12,2"],
+            ["Revesti-vos do Senhor Jesus Cristo e não cuideis da carne em suas concupiscências.", "Rm 13,14"],
+            ["Orai sem cessar.", "1 Ts 5,17"],
+            ["Em silêncio e esperança estará a vossa fortaleza.", "Is 30,15"],
+            ["Aquietai-vos e sabei que eu sou Deus.", "Sl 45(46),11"],
+            ["Não vos inquieteis com o dia de amanhã, porque o dia de amanhã cuidará de si mesmo.", "Mt 6,34"],
+            ["Buscai primeiro o reino de Deus e a sua justiça.", "Mt 6,33"],
+            ["Onde estiver o teu tesouro, aí estará também o teu coração.", "Mt 6,21"],
+            ["Ignorar as Escrituras é ignorar Cristo.", "S. Jerônimo"],
+            ["Fizeste-nos para vós, e inquieto está o nosso coração enquanto não repousa em vós.", "S. Agostinho, Confissões I,1"],
+            ["Nada se anteponha à Obra de Deus.", "Regra de S. Bento, c. 43"],
+            ["Sede, pois, imitadores de Deus, como filhos muito amados; e andai em caridade.", "Ef 5,1-2"],
+            ["Não é bom para o homem estar só; farei para ele uma ajuda semelhante a ele.", "Gn 2,18"],
+            ["A palavra de Cristo habite em vós abundantemente.", "Cl 3,16"],
+            ["A minha alma tem sede de Deus, do Deus vivo; quando irei e aparecerei ante a face de Deus?", "Sl 41(42),3"],
+            ["Quem é fiel no pouco também é fiel no muito.", "Lc 16,10"],
+            ["O que o homem semear, isso também ceifará.", "Gl 6,7"],
+            ["O amor não busca os seus próprios interesses.", "1 Cor 13,5"],
+            ["Tudo quanto fizerdes por palavras ou por obras, fazei tudo em nome do Senhor Jesus.", "Cl 3,17"],
+            ["Porque tudo o que há no mundo — a concupiscência da carne, a concupiscência dos olhos e a soberba da vida — não é do Pai, mas do mundo.", "1 Jo 2,16"],
+            ["Senhor, desviai-me da curiosidade vã e dai-me o amor à verdade.", "Oração"],
+            ["Senhor, concedei-me a custódia dos olhos e a vigilância da mente.", "Oração"],
+            ["Fazei, Senhor, que eu use o tempo como dom e não como fuga.", "Oração"],
+            ["Quem ama o perigo nele perecerá.", "Eclo 3,27"],
+            ["A ociosidade é inimiga da alma; por isso, a certas horas os irmãos devem ocupar-se no trabalho manual, e a certas horas, na leitura divina.", "Regra de S. Bento, c. 48"],
+            ["Não vos deixeis vencer do mal, mas vencei o mal com o bem.", "Rm 12,21"],
+            ["Cingi os lombos do vosso entendimento, sede sóbrios e esperai inteiramente na graça.", "1 Pd 1,13"],
+            ["Sede prontos para ouvir, tardios para falar, tardios para se irar.", "Tg 1,19"],
+            ["Quem guarda a sua boca e a sua língua guarda a sua alma das angústias.", "Pr 21,23"],
+            ["Os olhos nunca se fartam de ver, nem os ouvidos se enchem de ouvir.", "Ecl 1,8"],
+            ["Melhor é um punhado com descanso do que ambas as mãos cheias com trabalho e aflição de espírito.", "Ecl 4,6"],
+            ["Senhor, ensinai-me a remir o tempo e a vigiar o coração.", "Oração"],
+            ["Jesus, fazei que a minha atenção vos pertença e não se disperse na vaidade.", "Oração"],
+            ["Maria, guardai os meus sentidos e conduzi-me ao silêncio interior.", "Oração"],
+            ["São Miguel Arcanjo, defendei-me nas tentações que entram pela curiosidade.", "Oração"],
+            ["Jesus, eu confio em vós.", "Jaculatória"]
+        ],
+
+        "ansiedade": [
+            ["Lançai sobre Ele toda a vossa solicitude, porque Ele tem cuidado de vós.", "1 Pd 5,7"],
+            ["Não andeis ansiosos por coisa alguma; em tudo, porém, sejam conhecidas diante de Deus as vossas petições, pela oração e súplica, com ação de graças.", "Fl 4,6"],
+            ["E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e os vossos sentimentos em Cristo Jesus.", "Fl 4,7"],
+            ["A paz vos deixo, a minha paz vos dou; não vo-la dou como o mundo a dá.", "Jo 14,27"],
+            ["Aquietai-vos e sabei que eu sou Deus.", "Sl 45(46),11"],
+            ["Não vos inquieteis com o dia de amanhã.", "Mt 6,34"],
+            ["Não vos inquieteis, pois, pelo dia de amanhã, porque o dia de amanhã cuidará de si mesmo.", "Mt 6,34"],
+            ["Confiai no Senhor de todo o vosso coração e não vos estribeis na vossa própria prudência.", "Pr 3,5"],
+            ["Entrega o teu caminho ao Senhor; confia nele, e ele o fará.", "Sl 36(37),5"],
+            ["Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus.", "Is 41,10"],
+            ["O Senhor é a minha luz e a minha salvação; a quem temerei?", "Sl 26(27),1"],
+            ["Tudo posso naquele que me fortalece.", "Fl 4,13"],
+            ["Não se turbe o vosso coração; credes em Deus, crede também em mim.", "Jo 14,1"],
+            ["Buscai primeiro o reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas.", "Mt 6,33"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Porque eu bem sei os pensamentos que tenho a vosso respeito, diz o Senhor; pensamentos de paz, e não de mal.", "Jr 29,11"],
+            ["O Senhor é a minha força e o meu escudo; nele confiou o meu coração.", "Sl 27(28),7"],
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["O Senhor está perto de todos os que o invocam.", "Sl 144(145),18"],
+            ["Não vos deixarei órfãos; voltarei para vós.", "Jo 14,18"],
+            ["Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso.", "Jaculatória"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, refúgio dos pecadores, rogai por nós.", "Ladainha"],
+            ["São José, terror dos demônios, rogai por nós.", "Ladainha"]
+        ],
+
+        "depressao": [
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito.", "Sl 33(34),19"],
+            ["Por que estás abatida, ó minha alma, e por que te perturbas dentro de mim? Espera em Deus.", "Sl 41(42),6"],
+            ["As misericórdias do Senhor são a causa de não sermos consumidos; porque as suas misericórdias não têm fim; renovam-se cada manhã.", "Lm 3,22-23"],
+            ["Levanta-te, come, porque ainda tens um longo caminho a percorrer.", "1 Rs 19,7"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo.", "Sl 22(23),4"],
+            ["Deus enxugará toda lágrima dos seus olhos; e não haverá mais morte, nem pranto, nem clamor, nem dor.", "Ap 21,4"],
+            ["Não vos entristeçais, porque a alegria do Senhor é a vossa força.", "Ne 8,10"],
+            ["O choro pode durar uma noite, mas a alegria vem pela manhã.", "Sl 29(30),6"],
+            ["Bem-aventurados os que choram, porque eles serão consolados.", "Mt 5,4"],
+            ["Tende bom ânimo: eu venci o mundo.", "Jo 16,33"],
+            ["A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza.", "2 Cor 12,9"],
+            ["Não fostes vós que me escolhestes; mas eu vos escolhi a vós.", "Jo 15,16"],
+            ["Antes que te formasse no ventre, eu te conheci; e antes que saísses da madre, eu te santifiquei.", "Jr 1,5"],
+            ["Vós sois o sal da terra... Vós sois a luz do mundo.", "Mt 5,13-14"],
+            ["Somos feitura sua, criados em Cristo Jesus para as boas obras.", "Ef 2,10"],
+            ["O Senhor é a minha luz e a minha salvação; a quem temerei?", "Sl 26(27),1"],
+            ["Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus.", "Is 41,10"],
+            ["Porque eu bem sei os pensamentos que tenho a vosso respeito, diz o Senhor; pensamentos de paz, e não de mal.", "Jr 29,11"],
+            ["Senhor, iluminai as minhas trevas.", "Oração"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, consoladora dos aflitos, rogai por nós.", "Ladainha"],
+            ["São José, esperança dos doentes, rogai por nós.", "Ladainha"]
+        ],
+
+        "solidão": [
+            ["Eis que eu estou convosco todos os dias, até à consumação dos séculos.", "Mt 28,20"],
+            ["Não vos deixarei órfãos; voltarei para vós.", "Jo 14,18"],
+            ["O Senhor é o meu auxílio; não temerei o que me possa fazer o homem.", "Hb 13,6"],
+            ["Ainda que meu pai e minha mãe me desamparassem, o Senhor me recolherá.", "Sl 26(27),10"],
+            ["O Senhor é a minha luz e a minha salvação; a quem temerei?", "Sl 26(27),1"],
+            ["Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus.", "Is 41,10"],
+            ["Perto está o Senhor de todos os que o invocam.", "Sl 144(145),18"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo.", "Sl 22(23),4"],
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["Não vos deixarei órfãos; voltarei para vós.", "Jo 14,18"],
+            ["Eis que estou à porta e bato; se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa.", "Ap 3,20"],
+            ["O Senhor está perto dos que têm o coração quebrantado.", "Sl 33(34),19"],
+            ["Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.", "Mt 18,20"],
+            ["Não vos deixarei órfãos; voltarei para vós.", "Jo 14,18"],
+            ["Jesus, doce hóspede da alma, ficai comigo.", "Oração"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, refúgio dos pecadores, rogai por nós.", "Ladainha"],
+            ["São José, pai e protetor, rogai por nós.", "Ladainha"]
+        ],
+
+        "inutilidade": [
+            ["Antes que te formasse no ventre, eu te conheci; e antes que saísses da madre, eu te santifiquei.", "Jr 1,5"],
+            ["Vós sois o sal da terra... Vós sois a luz do mundo.", "Mt 5,13-14"],
+            ["Somos feitura sua, criados em Cristo Jesus para as boas obras.", "Ef 2,10"],
+            ["A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza.", "2 Cor 12,9"],
+            ["Não fostes vós que me escolhestes; mas eu vos escolhi a vós.", "Jo 15,16"],
+            ["Criou Deus o homem à sua imagem; à imagem de Deus o criou.", "Gn 1,27"],
+            ["Vós sois deuses, filhos do Altíssimo, todos vós.", "Sl 81(82),6"],
+            ["Não sabeis vós que sois templo de Deus e que o Espírito de Deus habita em vós?", "1 Cor 3,16"],
+            ["Porque somos feitura sua, criados em Cristo Jesus para as boas obras, as quais Deus preparou para que andássemos nelas.", "Ef 2,10"],
+            ["Não fostes vós que me escolhestes; mas eu vos escolhi a vós, e vos designei para que vades e deis fruto.", "Jo 15,16"],
+            ["Cada um recebe o dom de manifestar o Espírito para proveito comum.", "1 Cor 12,7"],
+            ["Tudo posso naquele que me fortalece.", "Fl 4,13"],
+            ["O Senhor é a minha força e o meu escudo; nele confiou o meu coração.", "Sl 27(28),7"],
+            ["Porque eu bem sei os pensamentos que tenho a vosso respeito, diz o Senhor; pensamentos de paz, e não de mal.", "Jr 29,11"],
+            ["Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito.", "Sl 33(34),19"],
+            ["Vós sois a luz do mundo. Não se pode esconder uma cidade edificada sobre um monte.", "Mt 5,14"],
+            ["Vós sois o sal da terra; ora, se o sal se tornar insípido, com que se há de salgar?", "Mt 5,13"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, auxílio dos cristãos, rogai por nós.", "Ladainha"]
+        ],
+
+        "angustia": [
+            ["Na minha angústia invoquei o Senhor, e Ele me ouviu.", "Sl 117(118),5"],
+            ["Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.", "Sl 45(46),2"],
+            ["Tende bom ânimo: eu venci o mundo.", "Jo 16,33"],
+            ["Senhor, apressai-vos em me socorrer.", "Sl 69(70),2"],
+            ["O Senhor é a minha luz e a minha salvação; a quem temerei?", "Sl 26(27),1"],
+            ["Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus.", "Is 41,10"],
+            ["Aquietai-vos e sabei que eu sou Deus.", "Sl 45(46),11"],
+            ["Lançai sobre Ele toda a vossa solicitude, porque Ele tem cuidado de vós.", "1 Pd 5,7"],
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito.", "Sl 33(34),19"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo.", "Sl 22(23),4"],
+            ["Confiai no Senhor de todo o vosso coração e não vos estribeis na vossa própria prudência.", "Pr 3,5"],
+            ["Entrega o teu caminho ao Senhor; confia nele, e ele o fará.", "Sl 36(37),5"],
+            ["Não vos inquieteis com o dia de amanhã.", "Mt 6,34"],
+            ["A paz vos deixo, a minha paz vos dou; não vo-la dou como o mundo a dá.", "Jo 14,27"],
+            ["Jesus, acalmai a tempestade.", "Oração"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, refúgio dos pecadores, rogai por nós.", "Ladainha"]
+        ],
+
+        "escrupulosidade": [
+            ["Ainda que o nosso coração nos condene, Deus é maior do que o nosso coração e conhece todas as coisas.", "1 Jo 3,20"],
+            ["Agora, pois, nenhuma condenação há para os que estão em Cristo Jesus.", "Rm 8,1"],
+            ["Filho, tem confiança; os teus pecados te são perdoados.", "Mt 9,2"],
+            ["Vai, e não peques mais.", "Jo 8,11"],
+            ["Onde abundou o pecado, superabundou a graça.", "Rm 5,20"],
+            ["Como o Oriente está longe do Ocidente, assim Ele afasta de nós as nossas transgressões.", "Sl 102(103),12"],
+            ["Se confessarmos os nossos pecados, Ele é fiel e justo para nos perdoar os pecados e nos purificar de toda injustiça.", "1 Jo 1,9"],
+            ["Não me lembrarei mais dos teus pecados.", "Is 43,25"],
+            ["A misericórdia do Senhor é de eternidade a eternidade sobre os que o temem.", "Sl 102(103),17"],
+            ["O Senhor é compassivo e misericordioso, tardio em irar-se e grande em benignidade.", "Sl 102(103),8"],
+            ["Não há condenação para os que estão em Cristo Jesus.", "Rm 8,1"],
+            ["Quem intentará acusação contra os escolhidos de Deus? É Deus quem os justifica.", "Rm 8,33"],
+            ["A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza.", "2 Cor 12,9"],
+            ["Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso.", "Jaculatória"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, refúgio dos pecadores, rogai por nós.", "Ladainha"]
+        ],
+
+        "culpa": [
+            ["Onde abundou o pecado, superabundou a graça.", "Rm 5,20"],
+            ["Como o Oriente está longe do Ocidente, assim Ele afasta de nós as nossas transgressões.", "Sl 102(103),12"],
+            ["Se confessarmos os nossos pecados, Ele é fiel e justo para nos perdoar os pecados e nos purificar de toda injustiça.", "1 Jo 1,9"],
+            ["Não me lembrarei mais dos teus pecados.", "Is 43,25"],
+            ["A misericórdia do Senhor é de eternidade a eternidade sobre os que o temem.", "Sl 102(103),17"],
+            ["O Senhor é compassivo e misericordioso, tardio em irar-se e grande em benignidade.", "Sl 102(103),8"],
+            ["Agora, pois, nenhuma condenação há para os que estão em Cristo Jesus.", "Rm 8,1"],
+            ["Ainda que o nosso coração nos condene, Deus é maior do que o nosso coração e conhece todas as coisas.", "1 Jo 3,20"],
+            ["Filho, tem confiança; os teus pecados te são perdoados.", "Mt 9,2"],
+            ["Vai, e não peques mais.", "Jo 8,11"],
+            ["Quem intentará acusação contra os escolhidos de Deus? É Deus quem os justifica.", "Rm 8,33"],
+            ["A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza.", "2 Cor 12,9"],
+            ["Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito.", "Sl 33(34),19"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["Jesus, tende piedade de mim.", "Jaculatória"],
+            ["Jesus, eu confio em vós.", "Jaculatória"],
+            ["Maria, refúgio dos pecadores, rogai por nós.", "Ladainha"]
+        ],
+
+        "tristeza": [
+            ["Bem-aventurados os que choram, porque eles serão consolados.", "Mt 5,4"],
+            ["Alegrai-vos sempre no Senhor; outra vez digo: alegrai-vos.", "Fl 4,4"],
+            ["Por que estás abatida, ó minha alma, e por que te perturbas dentro de mim? Espera em Deus.", "Sl 41(42),6"],
+            ["O choro pode durar uma noite, mas a alegria vem pela manhã.", "Sl 29(30),6"],
+            ["Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei.", "Mt 11,28"],
+            ["Não vos entristeçais, porque a alegria do Senhor é a vossa força.", "Ne 8,10"],
+            ["Deus enxugará toda lágrima dos seus olhos; e não haverá mais morte, nem pranto, nem clamor, nem dor.", "Ap 21,4"],
+            ["Ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo.", "Sl 22(23),4"],
+            ["Lançai sobre Ele toda a vossa solicitude, porque Ele tem cuidado de vós.", "1 Pd 5,7"],
+            ["O Senhor é o meu pastor; nada me faltará.", "Sl 22(23),1"],
+            ["Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito.", "Sl 33(34),19"],
+            ["As misericórdias do Senhor são a causa de não sermos consumidos; porque as suas misericórdias não têm fim; renovam-se cada manhã.", "Lm 3,22-23"],
+            ["Tende bom ânimo: eu venci o mundo.", "Jo 16,33"],
+            ["A paz vos deixo, a minha paz vos dou; não vo-la dou como o mundo a dá.", "Jo 14,27"],
+            ["Jesus, consolai o meu coração.", "Oração"],
+            ["Maria, Mãe das Dores, rogai por nós.", "Ladainha"],
+            ["São José, consolador dos aflitos, rogai por nós.", "Oração"],
+            ["Senhor, transformai a minha tristeza em esperança.", "Oração"],
+            ["Jesus, eu confio em vós.", "Jaculatória"]
+        ],
+
+        "emergencia": [
+            ["São Miguel Arcanjo, defendei-nos no combate; sede o nosso auxílio contra as maldades e ciladas do demônio.", "Oração a S. Miguel (Leão XIII)"],
+            ["Pelo sinal da santa Cruz, livrai-nos, Deus, Nosso Senhor, dos nossos inimigos.", "Sinal da Cruz"],
+            ["A Cruz sagrada seja a minha luz; não seja o dragão o meu guia. Retira-te, Satanás!", "Medalha de S. Bento"],
+            ["Ao Senhor teu Deus adorarás e só a Ele servirás.", "Mt 4,10"],
+            ["Senhor, apressai-vos em me socorrer.", "Sl 69(70),2"],
+            ["Jesus, Filho de Davi, tende piedade de mim!", "Mc 10,47"],
+            ["Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora de nossa morte.", "Ave-Maria"],
+            ["Jesus, Maria e José, assisti-me na última agonia.", "Invocação tradicional"],
+            ["Em vossas mãos, Senhor, entrego o meu espírito.", "Lc 23,46"]
+        ]
+    };
+
+    let decks = {};
+    let indices = {};
+    let categoriaAtual = null;
+    let textoOriginalMapeado = null; // Salva o texto original quando é mapeado para um logismoi
+    let contadorUsoLocal = {}; // Conta quantas vezes já usou todas as frases locais
+    let fraseAtual = null; // Armazena a frase atual sendo exibida [texto, referencia]
+    
+    // Sistema de histórico de frases recentes para evitar repetição
+    function obterFrasesRecentes(categoria) {
+        try {
+            const key = `frases_recentes_${categoria}`;
+            const recentes = localStorage.getItem(key);
+            return recentes ? JSON.parse(recentes) : [];
+        } catch (e) {
+            return [];
+        }
+    }
+    
+    function salvarFraseRecente(categoria, frase) {
+        try {
+            const key = `frases_recentes_${categoria}`;
+            let recentes = obterFrasesRecentes(categoria);
+            // Adiciona no início
+            recentes.unshift(frase);
+            // Mantém apenas últimas 15 frases (aumentado para evitar repetição quando cache é pequeno)
+            recentes = recentes.slice(0, 15);
+            localStorage.setItem(key, JSON.stringify(recentes));
+        } catch (e) {
+            console.warn('Erro ao salvar frase recente:', e);
+        }
+    }
+    
+    function jaFoiUsadaRecentemente(categoria, frase) {
+        const recentes = obterFrasesRecentes(categoria);
+        return recentes.some(r => r[0] === frase[0] && r[1] === frase[1]);
+    }
+    
+    function filtrarFrasesRecentes(frases, categoria) {
+        // Retorna frases que não foram usadas recentemente
+        return frases.filter(f => !jaFoiUsadaRecentemente(categoria, f));
+    }
+
+    // Chave da API Groq: o app usa localStorage.getItem('groq_api_key').
+    // Para usar a API, defina a chave no navegador (ex.: DevTools > Application > Local Storage)
+    // ou adicione uma tela de configurações no app para o usuário colar a chave.
+
+    // Mapeamento de categorias para nomes exibidos
+    const NOMES_CATEGORIAS = {
+        'ansiedade': 'Ansiedade',
+        'depressao': 'Depressão',
+        'tristeza': 'Tristeza',
+        'solidão': 'Solidão',
+        'inutilidade': 'Inutilidade',
+        'angustia': 'Angústia',
+        'escrupulosidade': 'Escrupulosidade',
+        'culpa': 'Culpa',
+        'soberba': 'Soberba',
+        'avareza': 'Avareza',
+        'luxuria': 'Luxúria',
+        'inveja': 'Inveja',
+        'gula': 'Gula',
+        'ira': 'Ira',
+        'acidia': 'Acídia',
+        'telas': 'Vício em Telas',
+        'emergencia': 'Emergência'
+    };
+
+    // Inicialização do campo de busca
+    (function() {
+        const searchInput = document.getElementById('search-input');
+        const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+        const searchButton = document.getElementById('search-button');
+        
+        if (!searchInput) return;
+        
+        // Mostra dropdown ao focar e garante que o botão fique visível
+        searchInput.addEventListener('focus', function() {
+            filtrarSugestoes();
+            suggestionsDropdown.classList.add('active');
+            
+            // Garante que o input não fique atrás do header fixo
+            setTimeout(() => {
+                const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 80;
+                const inputRect = searchInput.getBoundingClientRect();
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Se o input está muito próximo ou atrás do header, ajusta o scroll
+                if (inputRect.top < headerHeight + 20) {
+                    // Scroll para posicionar o input logo abaixo do header com espaço
+                    const targetScroll = currentScroll + inputRect.top - headerHeight - 20;
+                    window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+                }
+            }, 100); // Pequeno delay para garantir que o layout está estável
+        });
+        
+        // Esconde dropdown ao perder foco (com delay para permitir clique)
+        searchInput.addEventListener('blur', function() {
+            setTimeout(() => {
+                suggestionsDropdown.classList.remove('active');
+            }, 200);
+        });
+        
+        // Filtra sugestões conforme digita
+        searchInput.addEventListener('input', function() {
+            filtrarSugestoes();
+        });
+        
+        // Enter para buscar
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                buscarRemedio();
+            }
+        });
+    })();
+    
+    // Função para filtrar sugestões
+    function filtrarSugestoes() {
+        const searchInput = document.getElementById('search-input');
+        const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+        const texto = (searchInput.value || '').toLowerCase().trim();
+        const items = suggestionsDropdown.querySelectorAll('.suggestion-item');
+        
+        items.forEach(item => {
+            const textoItem = item.textContent.toLowerCase();
+            if (textoItem.includes(texto) || texto === '') {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    // Função para selecionar uma sugestão
+    function selecionarSugestao(categoria) {
+        const searchInput = document.getElementById('search-input');
+        const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+        
+        searchInput.value = NOMES_CATEGORIAS[categoria] || categoria;
+        suggestionsDropdown.classList.remove('active');
+        searchInput.blur();
+        
+        // Busca automaticamente
+        buscarRemedioComCategoria(categoria);
+    }
+    
+    // Função para tentar encontrar categoria similar (fallback quando API não funciona)
+    function tentarEncontrarCategoriaSimilar(texto) {
+        const textoLower = texto.toLowerCase();
+        
+        // Palavras-chave para cada categoria (incluindo filhos dos logismoi)
+        const keywords = {
+            'ansiedade': ['ansioso', 'ansiedade', 'preocupado', 'nervoso', 'inquieto', 'angustiado'],
+            'tristeza': ['triste', 'tristeza', 'melancolia', 'desânimo', 'abatido', 'murmuração', 'reclamação constante', 'vitimismo', 'detração', 'pesar', 'pessimismo', 'amargura de espírito', 'isolamento emburrado', 'suspeita', 'fofoca maldosa', 'comparação constante', 'falta de gratidão', 'insatisfação existencial', 'desejo de falha do outro', 'crítica destrutiva', 'estreiteza de alma', 'incapacidade de celebrar', 'tristeza pelo bem', 'ressentimento contra a providência', 'autocondenação excessiva', 'busca de defeitos', 'desconfiança', 'hostilidade velada', 'melancolia egoísta', 'dureza no trato', 'sentimento de injustiça', 'falta de generosidade', 'tristeza por perdas materiais', 'pesar por pecados passados sem esperança', 'malícia', 'ódio à luz', 'tristeza pelo tempo perdido', 'avareza emocional', 'falta de amabilidade', 'desejo de ser o único premiado', 'diminuição do mérito alheio', 'prazer em notícias ruins', 'falsas condolências', 'boicote silencioso', 'recusa em colaborar', 'tristeza por não ser notado', 'ressentimento contra os pais', 'ódio à própria vida', 'desprezo pela própria vocação', 'obsessão pelo que falta', 'esquecimento dos benefícios recebidos', 'murmuração contra o clima', 'murmuração contra o tempo', 'desgosto pelo dever', 'frieza diante da dor alheia', 'alegria na queda moral do outro', 'sentimento de abandono por deus', 'tristeza na oração', 'desânimo no combate aos vícios', 'pusilanimidade'],
+            'depressao': ['depressão', 'deprimido', 'sem esperança', 'vazio', 'sem sentido'],
+            'solidão': ['sozinho', 'solidão', 'isolado', 'solitário', 'abandonado'],
+            'inutilidade': ['inútil', 'sem valor', 'sem propósito', 'sem sentido'],
+            'angustia': ['angústia', 'aflito', 'aflição', 'sofrimento'],
+            'escrupulosidade': ['escrupuloso', 'culpa excessiva', 'perfeccionismo', 'rigidez'],
+            'culpa': ['culpa', 'culpado', 'arrependido', 'remorso'],
+            'soberba': ['orgulho', 'soberba', 'vaidade', 'presunção', 'arrogante', 'hipocrisia', 'ostentação', 'jactância', 'mentira para parecer melhor', 'busca de elogios', 'sensibilidade à crítica', 'fingimento de piedade', 'amor às honras', 'exibicionismo', 'desejo de aparecer', 'falar de si mesmo', 'busca de cargos', 'necessidade de aprovação', 'vaidade física', 'elegância para ser notado', 'zombaria dos outros', 'originalidade forçada', 'desobediência', 'independência', 'vanglória intelectual', 'contar vantagens', 'falsa modéstia', 'desejo de ensinar', 'presunção de santidade', 'futilidade', 'amor às novidades', 'desprezo pelos simples', 'competição espiritual', 'uso de jargões para impressionar', 'tristeza se não é aplaudido', 'alegria na humilhação do rival', 'inventar histórias', 'exagerar sofrimentos para ter pena', 'exagerar virtudes', 'fazer o bem para ser visto', 'rezar em público com afetação', 'falar com voz impostada', 'nomear pessoas importantes', 'adulação', 'busca de curtidas', 'busca de seguidores', 'inveja de quem brilha mais', 'raiva de quem não o reconhece', 'preocupação com a imagem', 'medo do ridículo', 'vergonha de ser simples', 'vergonha de parentes humildes', 'atribuir-se ideias alheias', 'monopolizar a conversa', 'interromper os outros', 'desprezo pelo anonimato', 'ambição de palcos', 'ostentação de títulos', 'vaidade acadêmica', 'vaidade de linhagem', 'falsa compunção', 'exibição de dons místicos', 'necessidade de ser consultado', 'ressentimento por ser ignorado', 'superficialidade moral', 'vida dupla', 'autossuficiência', 'desprezo pelo próximo', 'rebeldia', 'ingratidão', 'dureza de cerviz', 'juízo sobre pecados alheios', 'incapacidade de pedir perdão', 'achar-se indispensável', 'confiança cega no intelecto', 'rejeição de conselhos', 'riso escarnecedor', 'superioridade moral', 'elitismo', 'distância afetiva', 'acreditar que não precisa de graça', 'atribuição de dons a si mesmo', 'solidão orgulhosa', 'tirania', 'falta de mansidão', 'ódio à correção', 'obstinação', 'considerar-se mestre', 'falta de reverência', 'pretensão de igualdade com deus', 'fechamento à verdade', 'amizade com o mundo', 'frieza absoluta', 'queda final', 'arrogância no olhar', 'tom de voz autoritário', 'desobediência aos pais', 'desobediência à igreja', 'incredulidade', 'blasfêmia intelectual', 'ódio à humildade', 'escárnio da simplicidade', 'crença na própria justiça', 'falta de oração de súplica', 'estilo de vida luxuoso por status', 'desprezo pelos sacramentos', 'individualismo feroz', 'manipulação de consciências', 'ambição de ser adorado', 'impiedade', 'fanatismo autoritário', 'frieza diante do crucificado', 'juízo final sobre as almas', 'recusa da misericórdia', 'idolatria da própria vontade', 'desprezo pela tradição', 'auto-divinização', 'ódio à dependência', 'cinismo metafísico', 'coração de pedra', 'insensibilidade espiritual', 'egoísmo radical', 'megalomania', 'apostasia', 'ódio a deus'],
+            'avareza': ['avareza', 'ganância', 'mesquinho', 'egoísta', 'mesquinhez', 'roubo', 'fraude', 'mentira comercial', 'usura', 'falta de caridade', 'ansiedade pelo futuro', 'acumulação compulsiva', 'dureza de coração', 'inveja dos ricos', 'medo da pobreza', 'adoração do capital', 'exploração do próximo', 'injustiça salarial', 'workaholismo', 'esquecimento da providência', 'frieza social', 'apego a objetos', 'litígios por herança', 'corrupção', 'simonia', 'falta de dízimo', 'cálculo constante de ganhos', 'preocupação sufocante', 'traição de amigos por lucro', 'idolatria da estabilidade', 'soberba da posse', 'indiferença à miséria', 'perda da liberdade interior', 'sonegação', 'apego a descontos injustos', 'tristeza ao gastar', 'alegria ao reter', 'desprezo pelo pobre', 'adulação de poderosos', 'falsificação de documentos', 'apropriação indébita', 'falta de esmola', 'medo de emprestar', 'cobrança implacável', 'apego a coleções', 'vaidade pelo patrimônio', 'insegurança existencial', 'ódio à renúncia', 'falsa pobreza', 'esconder bens', 'murmuração contra impostos', 'negligência com a própria família por economia', 'compra de luxos desnecessários', 'ostentação de marcas', 'inveja de quem gasta', 'ambição de cargos rentáveis', 'perda de tempo em sites de compras', 'foco total em investimentos', 'desonestidade em pequenos trocos', 'falta de zelo com bens alheios', 'idolatria do conforto', 'venda de valores morais', 'medo de partilhar o tempo', 'morte espiritual por asfixia material'],
+            'luxuria': ['luxúria', 'impureza', 'pornografia', 'desejo carnal', 'fornicação', 'adultério', 'masturbação', 'pensamentos impuros consentidos', 'olhares possessivos', 'sedução manipuladora', 'narcisismo erótico', 'objetificação do próximo', 'conversas de duplo sentido', 'impudicícia no vestir', 'curiosidade visual', 'fantasias obsessivas', 'perda da sensibilidade afetiva', 'isolamento', 'cegueira da mente', 'mentis caecitas', 'precipitação', 'inconstância', 'amor-próprio desordenado', 'ódio a deus como juiz', 'apego ao mundo', 'medo da morte', 'instabilidade emocional', 'frieza com o cônjuge', 'busca por novidade constante', 'perversões', 'profanação do corpo', 'escravidão dos sentidos', 'inquietude', 'cinismo sobre a castidade', 'toques impuros', 'leituras lascivas', 'exibicionismo', 'voyeurismo', 'uso de roupas provocantes', 'maquiagem sedutora excessiva', 'posturas corporais ambíguas', 'frequência a lugares de vício', 'estímulo da luxúria alheia', 'amizades sentimentais perigosas', 'quebra de promessas de castidade', 'desprezo pela virgindade', 'justificação do pecado sexual', 'perda do pudor', 'prostituição da alma', 'troca de afetos por interesses', 'inveja da liberdade sexual alheia', 'memória de pecados passados com prazer', 'distração na missa por olhares', 'falta de modéstia', 'palavras obscenas', 'desejo de ser desejado', 'flertes desnecessários', 'uso do sexo para poder', 'crueldade afetiva', 'divórcio espiritual', 'abandono do coração', 'apego a sensações', 'horror ao celibato', 'deboche da pureza', 'desespero de ser limpo'],
+            'inveja': ['inveja', 'ciúme', 'ressentimento', 'alegria pelo mal alheio', 'pesar pelo sucesso alheio', 'inveja de carismas', 'inveja de beleza', 'inveja de inteligência', 'inveja de relacionamentos'],
+            'gula': ['gula', 'comer demais', 'glutonaria', 'excesso', 'bebedeira', 'voracidade', 'comer fora de hora', 'busca por iguarias', 'sofisticação excessiva', 'desperdício', 'pressa ao comer', 'ingestão compulsiva', 'embotamento mental', 'flatulência da mente', 'conversa fiada sobre comida', 'apego a sabores', 'irritação com jejum', 'idolatria da dieta', 'sonolência espiritual', 'peso corporal excessivo', 'preguiça física', 'busca por conforto gástrico', 'sensualidade latente', 'materialismo', 'incapacidade de saciedade', 'dependência de substâncias', 'gastos desproporcionais com paladar', 'negligência dos pobres', 'perda da sobriedade', 'nepsis', 'distração na oração', 'finesse culinária como orgulho', 'obsessão por receitas', 'ansiedade pela próxima refeição', 'comer escondido', 'reclamação do tempero', 'exigência de atendimento rápido', 'preferência pelo caro', 'embriaguez social', 'perda do sentido do sagrado no alimento', 'desobediência a prescrições médicas', 'uso do alimento como anestésico emocional', 'falta de gratidão à mesa', 'compra impulsiva em mercados', 'desprezo por alimentos simples', 'foco na quantidade', 'foco na qualidade extrema', 'estímulo da gula em outros', 'ostentação gastronômica', 'perda da elegância no comer', 'arrotos deliberados', 'dispersão dos sentidos', 'falta de partilha', 'crítica aos cozinheiros', 'escravidão do estômago', 'falta de domínio próprio', 'obnubilação da consciência', 'gula de bebidas fitness', 'gula de bebidas gourmet', 'fixação em texturas', 'idolatria do chef', 'esquecimento da oração antes das refeições', 'roubo de comida', 'mentira sobre o que comeu', 'tristeza por não poder comer mais'],
+            'ira': ['raiva', 'ira', 'ódio', 'irritado', 'furioso', 'traição', 'traicao', 'traído', 'traido', 'vingança', 'vinganca', 'ressentimento', 'rancor', 'clamor', 'gritos', 'indignação', 'blasfêmia', 'violência física', 'sarcasmo ferino', 'insultos', 'rancor memorioso', 'mau humor crônico', 'impaciência', 'intolerância', 'agressividade passiva', 'indignação santa falsa', 'desejo de mal', 'amargura', 'brigas familiares', 'impetuosidade', 'cegueira racional', 'tremores físicos', 'perturbação do sono', 'juízo temerário', 'espírito de discórdia', 'teimosia', 'rixas', 'crueldade', 'autojustificação', 'raiva de deus', 'vontade de aniquilar', 'murmuração entre dentes', 'gestos obscenos', 'bater portas', 'quebrar objetos', 'silêncio punitivo', 'maldições', 'desejo de morte', 'perda da doçura', 'rosto sombrio', 'ironia destrutiva', 'crítica ácida', 'difamação por raiva', 'ódio a correção', 'inimizades longas', 'falta de perdão', 'reclamação do destino', 'irritação com crianças', 'brutalidade verbal', 'falta de cortesia', 'cinismo', 'desprezo pelo oponente', 'alegria na humilhação alheia', 'rigidez excessiva', 'descontrole emocional', 'vitupério', 'calúnia motivada por vingança', 'provocação deliberada', 'intrigas', 'frieza vingativa', 'desespero colérico'],
+            'acidia': ['preguiça', 'acídia', 'desânimo', 'apatia', 'indolência', 'tédio', 'instabilidade', 'sono na oração', 'ativismo frenético', 'fuga', 'negligência', 'procrastinação', 'curiosidade vã', 'loquacidade', 'divagação da mente', 'instabilidade de propósito', 'desgosto pela cela', 'desgosto pela casa', 'entretenimento vazio', 'desprezo pela regra', 'falta de atenção', 'desleixo físico', 'horror ao silêncio', 'necessidade de novidade', 'abandono da leitura', 'falta de persistência', 'pusilanimidade', 'burnout espiritual', 'desejo de mudar de estado', 'perda de sentido', 'desespero', 'sonolência diurna', 'busca de visitas desnecessárias', 'fuga para redes sociais', 'murmuração contra superiores', 'desleixo no trabalho', 'atrasos constantes', 'falta de higiene pessoal', 'alimentação desregrada por tédio', 'busca de distrações ruidosas', 'ódio ao esforço', 'superficialidade', 'fragmentação da vontade', 'espírito de deixa para amanhã', 'desprezo pelas pequenas coisas', 'busca de espiritualidades leves', 'falta de constância no jejum', 'instabilidade de moradia', 'mudança frequente de opiniões', 'perda da esperança na santidade', 'mal-estar físico sem causa', 'desejo de estar onde não está', 'irritação com o horário', 'reclamação da monotonia', 'falta de foco', 'dispersão visual', 'fofoca por desocupação', 'sono como fuga', 'ativismo social sem vida interior', 'desprezo pela liturgia', 'sensação de peso na alma', 'horror à solidão', 'busca de prazeres imediatos', 'indiferença radical'],
+            'telas': ['celular', 'tela', 'vício', 'redes sociais', 'internet', 'vício digital'],
+            'emergencia': ['emergência', 'urgente', 'ajuda', 'socorro', 'perigo']
+        };
+        
+        // Procura correspondências
+        for (const [categoria, palavras] of Object.entries(keywords)) {
+            for (const palavra of palavras) {
+                if (textoLower.includes(palavra)) {
+                    return categoria;
+                }
+            }
+        }
+        
+        return 'personalizado';
+    }
+    
+    // Função para classificar texto via API
+    async function classificarTexto(texto) {
+        const apiKey = localStorage.getItem('groq_api_key');
+        if (!apiKey) {
+            // Fallback: tenta encontrar categoria similar
+            return tentarEncontrarCategoriaSimilar(texto);
+        }
+        
+        try {
+            const categoriasDisponiveis = Object.keys(NOMES_CATEGORIAS).join(', ');
+            
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [{
+                        role: 'system',
+                        content: 'Você é um assistente que classifica pensamentos e sentimentos em categorias específicas. Retorne APENAS o nome da categoria em minúsculas, sem aspas, sem pontuação, sem explicações.'
+                    }, {
+                        role: 'user',
+                        content: `Classifique este pensamento/sentimento em uma destas categorias: ${categoriasDisponiveis}
+
+Texto: "${texto}"
+
+Retorne APENAS o nome da categoria (exemplo: ansiedade, tristeza, soberba). Se não se encaixar em nenhuma, retorne "personalizado".`
+                    }],
+                    temperature: 0.3,
+                    max_tokens: 20
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            const categoria = data.choices[0].message.content.trim().toLowerCase();
+            
+            // Valida se é uma categoria válida
+            if (NOMES_CATEGORIAS[categoria] || categoria === 'personalizado') {
+                return categoria;
+            }
+            
+            return 'personalizado';
+        } catch (error) {
+            console.error('Erro ao classificar texto:', error);
+            // Fallback: tenta encontrar categoria similar
+            return tentarEncontrarCategoriaSimilar(texto);
+        }
+    }
+    
+    // Função para buscar remédio (com classificação)
+    async function buscarRemedio() {
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const texto = (searchInput.value || '').trim();
+        
+        if (!texto) {
+            alert('Por favor, descreva como você está se sentindo.');
+            searchInput.focus();
+            return;
+        }
+        
+        // Desabilita botão
+        searchButton.disabled = true;
+        searchButton.textContent = 'Buscando...';
+        
+        // Tenta identificar categoria diretamente pelo texto
+        let categoria = null;
+        const textoLower = texto.toLowerCase();
+        
+        // Busca direta nas categorias
+        for (const [key, nome] of Object.entries(NOMES_CATEGORIAS)) {
+            if (textoLower === nome.toLowerCase() || textoLower === key) {
+                categoria = key;
+                break;
+            }
+        }
+        
+        // Primeiro tenta encontrar categoria similar (sem chamar API)
+        let foiMapeado = false;
+        const categoriaSimilar = tentarEncontrarCategoriaSimilar(texto);
+        if (categoriaSimilar && categoriaSimilar !== 'personalizado') {
+            categoria = categoriaSimilar;
+            foiMapeado = true;
+            textoOriginalMapeado = texto;
+        } else if (!categoria) {
+            // Só chama API se não encontrou categoria similar
+            categoria = await classificarTexto(texto);
+            if (!categoria || categoria === 'personalizado') {
+                categoria = 'personalizado';
+                textoOriginalMapeado = null;
+            } else {
+                textoOriginalMapeado = null;
+            }
+        } else {
+            textoOriginalMapeado = null;
+        }
+        
+        // Salva busca no histórico
+        salvarNoHistorico(texto, categoria);
+        
+        // Mostra frase
+        if (categoria === 'personalizado') {
+            await mostrarFrasePersonalizada(texto);
+        } else {
+            await mostrarFrase(categoria, foiMapeado ? texto : null);
+        }
+        
+        // Reabilita botão
+        searchButton.disabled = false;
+        searchButton.textContent = 'Buscar Remédio Espiritual';
+    }
+    
+    // Função para buscar com categoria já conhecida
+    async function buscarRemedioComCategoria(categoria) {
+        const searchButton = document.getElementById('search-button');
+        textoOriginalMapeado = null; // Limpa mapeamento quando seleciona diretamente
+        searchButton.disabled = true;
+        searchButton.textContent = 'Buscando...';
+        
+        await mostrarFrase(categoria);
+        
+        searchButton.disabled = false;
+        searchButton.textContent = 'Buscar Remédio Espiritual';
+    }
+    
+    // Função para gerar frase personalizada
+    async function gerarFrasePersonalizada(texto) {
+        const apiKey = localStorage.getItem('groq_api_key');
+        if (!apiKey) {
+            return ["Não foi possível gerar uma frase personalizada. Por favor, selecione uma das categorias sugeridas.", "Sistema"];
+        }
+        
+        // Timeout de segurança: se demorar mais de 8 segundos, retorna null
+        const timeoutPromise = new Promise((resolve) => {
+            setTimeout(() => resolve(null), 8000);
+        });
+        
+        try {
+            const fetchPromise = fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [{
+                        role: 'system',
+                        content: 'Você é um assistente espiritual cristão ortodoxo/católico. Você SÓ produz frases enraizadas na Tradição da Igreja: Sagrada Escritura, Padres do Deserto, Santos e Doutores da Igreja, liturgia e orações tradicionais. Evite totalmente frases genéricas de autoajuda, slogans motivacionais ou conselhos vagos. Use linguagem formal, bíblica e patrística, com sabor de teologia ascética e mística.'
+                    }, {
+                        role: 'user',
+                        content: `Gere uma frase espiritual cristã profundamente enraizada na Tradição para combater este pensamento específico: "${texto}".
+
+REQUISITOS:
+- Priorize uma citação REAL da Bíblia, de um santo clássico (por exemplo: Santo Agostinho, São Tomás de Aquino, Santa Teresinha, São João da Cruz, Santa Teresa d’Ávila) ou dos Padres do Deserto (por exemplo: Evágrio Pôntico, João Cassiano). Se for uma paráfrase, mantenha claramente o tom bíblico/patrístico.
+- NÃO escreva frases genéricas, slogans ou frases muito óbvias, do tipo "Corpo casto, alma pura" ou "Deus te ama e pronto". A frase deve trazer verdadeira sabedoria espiritual concreta.
+- Linguagem formal, reverente, em português, própria de um livro clássico de espiritualidade (teologia ascética e mística).
+- Tamanho: entre 60 e 160 caracteres (densa, mas não longa demais).
+- Referência bíblica (ex: "Mt 11,29", "Sl 22,1") OU de santo (ex: "S. Agostinho", "S. Tomás de Aquino", "S. João da Cruz") OU tipo (ex: "Oração", "Jaculatória", "Hino litúrgico").
+
+FORMATO DE RESPOSTA:
+Retorne APENAS no formato: "FRASE", "REFERÊNCIA"
+
+Exemplo: "Aprendei de mim, que sou manso e humilde de coração.", "Mt 11,29"`
+                    }],
+                    temperature: 0.8,
+                    max_tokens: 120
+                })
+            });
+            
+            // Usa Promise.race para garantir timeout
+            const response = await Promise.race([fetchPromise, timeoutPromise]);
+            
+            if (!response || response.timeout) {
+                console.warn('Timeout ao gerar frase personalizada (8s)');
+                return null;
+            }
+            
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Erro da API:', response.status, errorText);
+                
+                // Se a API retornou erro, tenta fallback antes de lançar exceção
+                const categoriaSimilar = tentarEncontrarCategoriaSimilar(texto);
+                if (categoriaSimilar && categoriaSimilar !== 'personalizado') {
+                    try {
+                        const [frase, ref] = await obterFrase(categoriaSimilar);
+                        return [frase, ref];
+                    } catch (e) {
+                        console.warn('Erro ao obter frase da categoria similar:', e);
+                    }
+                }
+                throw new Error(`API error: ${response.status} - ${errorText}`);
+            }
+            
+            const data = await response.json();
+            const content = data.choices[0].message.content.trim();
+            
+            // Parse da resposta
+            let match = content.match(/^"([^"]+)"\s*,\s*"([^"]+)"$/);
+            if (!match) {
+                match = content.match(/^([^"]+)\s*,\s*"([^"]+)"$/);
+            }
+            if (!match) {
+                const parts = content.split(/,\s*/);
+                if (parts.length >= 2) {
+                    match = [null, parts[0].replace(/^["']|["']$/g, ''), parts.slice(1).join(', ').replace(/^["']|["']$/g, '')];
+                }
+            }
+            
+            if (match && match[1] && match[2]) {
+                const frase = match[1].trim();
+                const referencia = match[2].trim();
+                
+                // Salva no cache de frases personalizadas para sensação de infinito
+                const cacheKey = `api_frases_personalizado`;
+                try {
+                    let frasesCache = [];
+                    const cached = localStorage.getItem(cacheKey);
+                    if (cached) {
+                        frasesCache = JSON.parse(cached);
+                    }
+                    
+                    // Adiciona nova frase ao cache (evita duplicatas)
+                    const jaExiste = frasesCache.some(f => f[0] === frase);
+                    if (!jaExiste) {
+                        frasesCache.push([frase, referencia]);
+                        // Mantém apenas últimas 200 frases geradas (para sensação de infinito)
+                        if (frasesCache.length > 200) {
+                            frasesCache = frasesCache.slice(-200);
+                        }
+                        localStorage.setItem(cacheKey, JSON.stringify(frasesCache));
+                    }
+                } catch (e) {
+                    console.warn('Erro ao salvar frase personalizada no cache:', e);
+                }
+                
+                return [frase, referencia];
+            }
+            
+            return ["Não foi possível gerar uma frase. Tente novamente ou selecione uma categoria.", "Sistema"];
+        } catch (error) {
+            console.error('Erro ao gerar frase personalizada:', error);
+            
+            // Detecta erro de CORS ou rede (arquivo aberto localmente ou API offline)
+            const isNetworkError = error.message.includes('fetch') || 
+                                  error.message.includes('CORS') || 
+                                  error.message.includes('Failed to fetch') ||
+                                  error.message.includes('NetworkError') ||
+                                  error.name === 'TypeError';
+            
+            if (isNetworkError) {
+                // Tenta usar categoria similar antes de mostrar erro
+                const categoriaSimilar = tentarEncontrarCategoriaSimilar(texto);
+                if (categoriaSimilar && categoriaSimilar !== 'personalizado') {
+                    try {
+                        const [frase, ref] = await obterFrase(categoriaSimilar);
+                        return [frase, ref];
+                    } catch (e) {
+                        console.warn('Erro ao obter frase da categoria similar:', e);
+                    }
+                }
+                
+                // Se não encontrou categoria similar, usa frase genérica
+                try {
+                    const frasesGenericas = BIBLIOTECA['emergencia'] || BIBLIOTECA['ansiedade'] || [];
+                    if (frasesGenericas.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * frasesGenericas.length);
+                        return frasesGenericas[randomIndex];
+                    }
+                } catch (e) {
+                    console.warn('Erro ao usar frase genérica:', e);
+                }
+                
+                return ["⚠️ API não disponível. Tente selecionar uma das categorias sugeridas ou use o app online em antirretico.netlify.app", "Sistema"];
+            }
+            
+            // Tenta usar uma categoria similar como fallback
+            const categoriaSimilar = tentarEncontrarCategoriaSimilar(texto);
+            if (categoriaSimilar && categoriaSimilar !== 'personalizado') {
+                try {
+                    const [frase, ref] = await obterFrase(categoriaSimilar);
+                    return [frase, ref];
+                } catch (e) {
+                    console.warn('Erro ao obter frase da categoria similar:', e);
+                }
+            }
+            
+            // Último fallback: usa uma frase genérica de emergência ou ansiedade
+            try {
+                const frasesGenericas = BIBLIOTECA['emergencia'] || BIBLIOTECA['ansiedade'] || [];
+                if (frasesGenericas.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * frasesGenericas.length);
+                    return frasesGenericas[randomIndex];
+                }
+            } catch (e) {
+                console.warn('Erro ao usar frase genérica:', e);
+            }
+            
+            return ["⚠️ Não foi possível gerar uma frase personalizada. Por favor, selecione uma das categorias sugeridas acima.", "Sistema"];
+        }
+    }
+    
+    // Função para mostrar frase personalizada
+    async function mostrarFrasePersonalizada(texto) {
+        categoriaAtual = 'personalizado';
+        const fullscreen = document.getElementById('fullscreen-frase');
+        const conteudo = document.getElementById('conteudo-frase-fullscreen');
+        const categoriaLabel = document.getElementById('categoria-label-fullscreen');
+        
+        fullscreen.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        categoriaLabel.textContent = 'Personalizado';
+        conteudo.innerHTML = '<p class="frase frase-placeholder">Gerando frase...</p>';
+        
+        const [frase, referencia] = await gerarFrasePersonalizada(texto);
+        
+        // Salva frase atual para poder guardar depois
+        fraseAtual = [frase, referencia, 'personalizado'];
+        
+        // Atualiza botão de guardar
+        atualizarBotaoGuardar();
+        
+        conteudo.classList.remove('fade-in');
+        void conteudo.offsetWidth;
+        conteudo.classList.add('fade-in');
+        conteudo.innerHTML = `<p class="frase">"${frase}"</p><p class="referencia">${referencia}</p>`;
+    }
+    
+    // Função para salvar no histórico
+    function salvarNoHistorico(texto, categoria) {
+        try {
+            let historico = [];
+            const historicoStr = localStorage.getItem('historico_buscas');
+            if (historicoStr) {
+                historico = JSON.parse(historicoStr);
+            }
+            
+            // Adiciona no início
+            historico.unshift({ texto, categoria, timestamp: Date.now() });
+            
+            // Mantém apenas últimas 10
+            historico = historico.slice(0, 10);
+            
+            localStorage.setItem('historico_buscas', JSON.stringify(historico));
+        } catch (e) {
+            console.warn('Erro ao salvar histórico:', e);
+        }
+    }
+
+    function shuffle(a) {
+        let c = a.length, r;
+        while (c != 0) { r = Math.floor(Math.random() * c); c--; [a[c], a[r]] = [a[r], a[c]]; }
+        return a;
+    }
+
+    // Função para obter frase (SEMPRE tenta API primeiro, só usa local se API falhar)
+    async function obterFrase(cat) {
+        // 1. PRIMEIRO: Tenta usar cache de API (frases já geradas pela API)
+        const cacheKey = `api_frases_${cat}`;
+        let frasesCacheAPI = [];
+        try {
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                frasesCacheAPI = JSON.parse(cached);
+            }
+        } catch (e) {
+            console.warn('Erro ao ler cache de API:', e);
+        }
+
+        // Se tem cache de API, usa ele (filtra recentes)
+        if (frasesCacheAPI.length > 0) {
+            const frasesDisponiveis = filtrarFrasesRecentes(frasesCacheAPI, cat);
+            
+            if (frasesDisponiveis.length > 0) {
+                const randomIndex = Math.floor(Math.random() * frasesDisponiveis.length);
+                const fraseEscolhida = frasesDisponiveis[randomIndex];
+                salvarFraseRecente(cat, fraseEscolhida);
+                
+                // SEMPRE gera nova frase em background para sensação de infinito
+                gerarFraseAPI(cat).catch(() => {});
+                
+                return fraseEscolhida;
+            }
+            
+            // Se todas foram usadas recentemente E tem poucas frases no cache (menos de 5)
+            // Força geração de nova frase bloqueante para evitar repetição
+            if (frasesCacheAPI.length < 5) {
+                try {
+                    const novaFrase = await gerarFraseAPI(cat);
+                    if (novaFrase && novaFrase[0] && novaFrase[1]) {
+                        salvarFraseRecente(cat, novaFrase);
+                        // Gera outra em background
+                        gerarFraseAPI(cat).catch(() => {});
+                        return novaFrase;
+                    }
+                } catch (e) {
+                    console.warn('Erro ao gerar nova frase quando cache pequeno:', e);
+                }
+            }
+            
+            // Se tem apenas 1 frase no cache e ela foi usada recentemente, SEMPRE força nova geração
+            if (frasesCacheAPI.length === 1) {
+                const ultimasRecentes = obterFrasesRecentes(cat);
+                if (ultimasRecentes.length > 0) {
+                    const ultimaUsada = ultimasRecentes[0];
+                    const unicaFrase = frasesCacheAPI[0];
+                    if (unicaFrase[0] === ultimaUsada[0] && unicaFrase[1] === ultimaUsada[1]) {
+                        // É a mesma frase que acabou de ser usada - força geração de nova
+                        try {
+                            const novaFrase = await gerarFraseAPI(cat);
+                            if (novaFrase && novaFrase[0] && novaFrase[1]) {
+                                salvarFraseRecente(cat, novaFrase);
+                                gerarFraseAPI(cat).catch(() => {});
+                                return novaFrase;
+                            }
+                        } catch (e) {
+                            console.warn('Erro ao gerar nova frase quando só tem 1 no cache:', e);
+                        }
+                    }
+                }
+            }
+            
+            // Se tem várias frases no cache mas todas foram usadas, escolhe qualquer uma
+            // mas garante que não seja a mesma da última vez
+            let fraseEscolhida;
+            const ultimasRecentes = obterFrasesRecentes(cat);
+            if (ultimasRecentes.length > 0 && frasesCacheAPI.length > 1) {
+                // Tenta escolher uma que não seja a última usada
+                const ultimaUsada = ultimasRecentes[0];
+                const outrasFrases = frasesCacheAPI.filter(f => 
+                    !(f[0] === ultimaUsada[0] && f[1] === ultimaUsada[1])
+                );
+                if (outrasFrases.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * outrasFrases.length);
+                    fraseEscolhida = outrasFrases[randomIndex];
+                } else {
+                    const randomIndex = Math.floor(Math.random() * frasesCacheAPI.length);
+                    fraseEscolhida = frasesCacheAPI[randomIndex];
+                }
+            } else {
+                const randomIndex = Math.floor(Math.random() * frasesCacheAPI.length);
+                fraseEscolhida = frasesCacheAPI[randomIndex];
+            }
+            
+            salvarFraseRecente(cat, fraseEscolhida);
+            
+            // SEMPRE gera nova frase em background
+            gerarFraseAPI(cat).catch(() => {});
+            
+            return fraseEscolhida;
+        }
+
+        // 2. SEGUNDO: Tenta gerar nova frase via API (bloqueante)
+        try {
+            const fraseAPI = await gerarFraseAPI(cat);
+            if (fraseAPI && fraseAPI[0] && fraseAPI[1]) {
+                salvarFraseRecente(cat, fraseAPI);
+                // Gera outra em background para próxima vez
+                gerarFraseAPI(cat).catch(() => {});
+                return fraseAPI;
+            }
+        } catch (e) {
+            console.warn('Erro ao gerar frase via API, usando fallback local:', e);
+        }
+
+        // 3. FALLBACK: Se API falhou, usa arsenal interno local
+        if (BIBLIOTECA[cat] && BIBLIOTECA[cat].length > 0) {
+            const frasesDisponiveis = filtrarFrasesRecentes(BIBLIOTECA[cat], cat);
+            
+            if (frasesDisponiveis.length > 0) {
+                const randomIndex = Math.floor(Math.random() * frasesDisponiveis.length);
+                const fraseEscolhida = frasesDisponiveis[randomIndex];
+                salvarFraseRecente(cat, fraseEscolhida);
+                
+                // Tenta gerar via API em background para próxima vez
+                gerarFraseAPI(cat).catch(() => {});
+                
+                return fraseEscolhida;
+            }
+            
+            // Se todas foram usadas, tenta escolher uma que não seja a última usada
+            const todasFrases = [...BIBLIOTECA[cat]];
+            let fraseEscolhida;
+            const ultimasRecentes = obterFrasesRecentes(cat);
+            
+            if (ultimasRecentes.length > 0 && todasFrases.length > 1) {
+                // Tenta escolher uma que não seja a última usada
+                const ultimaUsada = ultimasRecentes[0];
+                const outrasFrases = todasFrases.filter(f => 
+                    !(f[0] === ultimaUsada[0] && f[1] === ultimaUsada[1])
+                );
+                if (outrasFrases.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * outrasFrases.length);
+                    fraseEscolhida = outrasFrases[randomIndex];
+                } else {
+                    // Se só tem uma frase ou todas são iguais, escolhe qualquer uma
+                    const randomIndex = Math.floor(Math.random() * todasFrases.length);
+                    fraseEscolhida = todasFrases[randomIndex];
+                }
+            } else {
+                const randomIndex = Math.floor(Math.random() * todasFrases.length);
+                fraseEscolhida = todasFrases[randomIndex];
+            }
+            
+            salvarFraseRecente(cat, fraseEscolhida);
+            
+            // Tenta gerar via API em background
+            gerarFraseAPI(cat).catch(() => {});
+            
+            return fraseEscolhida;
+        }
+        
+        // Último fallback
+        return ["Não há frases disponíveis para esta categoria.", "Sistema"];
+    }
+
+    // Função para mostrar frase em tela cheia
+    async function mostrarFrase(cat, textoOriginal = null) {
+        categoriaAtual = cat;
+        const fullscreen = document.getElementById('fullscreen-frase');
+        const conteudo = document.getElementById('conteudo-frase-fullscreen');
+        const categoriaLabel = document.getElementById('categoria-label-fullscreen');
+        
+        // Mostra a tela fullscreen
+        fullscreen.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Atualiza label da categoria (maior)
+        categoriaLabel.textContent = NOMES_CATEGORIAS[cat] || cat;
+        
+        // Mostra loading
+        conteudo.innerHTML = '<p class="frase frase-placeholder">Carregando...</p>';
+        
+        // Obtém a frase
+        const [frase, referencia] = await obterFrase(cat);
+        
+        // Prepara explicação se foi mapeado
+        let explicacaoHTML = '';
+        if (textoOriginal && textoOriginal.toLowerCase() !== (NOMES_CATEGORIAS[cat] || cat).toLowerCase()) {
+            explicacaoHTML = `<p class="explicacao-mapeamento">💡 O sentimento "${textoOriginal}" está relacionado ao logismoi <strong>${NOMES_CATEGORIAS[cat] || cat}</strong>. Muitos sentimentos são variações dos logismoi principais.</p>`;
+        }
+        
+        // Salva frase atual para poder guardar depois
+        fraseAtual = [frase, referencia, cat];
+        
+        // Atualiza botão de guardar
+        atualizarBotaoGuardar();
+        
+        // Anima a frase
+        conteudo.classList.remove('fade-in');
+        void conteudo.offsetWidth;
+        conteudo.classList.add('fade-in');
+        conteudo.innerHTML = `${explicacaoHTML}<p class="frase">"${frase}"</p><p class="referencia">${referencia}</p>`;
+    }
+
+    // Função para gerar outra frase para o mesmo sentimento
+    async function gerarOutraFrase() {
+        if (!categoriaAtual) return;
+        
+        const conteudo = document.getElementById('conteudo-frase-fullscreen');
+        const btnGerar = document.getElementById('btn-gerar-outra');
+        if (!conteudo) return;
+        
+        // Desabilita o botão e mostra mensagem de espera
+        if (btnGerar) {
+            btnGerar.disabled = true;
+            btnGerar.textContent = 'Aguarde... Gerando nova frase';
+            btnGerar.style.opacity = '0.6';
+            btnGerar.style.cursor = 'not-allowed';
+        }
+        
+        // Mostra loading com mensagem de reflexão
+        conteudo.innerHTML = '<p class="frase frase-placeholder">Gerando nova frase...</p><p style="font-size: 0.85rem; color: var(--muted); margin-top: 12px; font-style: italic; text-align: center;">💭 Reflita sobre esta frase antes de buscar outra...</p>';
+        
+        let frase, referencia;
+        
+        // Timeout de segurança: se demorar mais de 10 segundos, usa fallback
+        const timeoutPromise = new Promise((resolve) => {
+            setTimeout(() => resolve(['timeout']), 10000);
+        });
+        
+        // Se for personalizado, busca o texto original do histórico
+        if (categoriaAtual === 'personalizado') {
+            try {
+                const historicoStr = localStorage.getItem('historico_buscas');
+                if (historicoStr) {
+                    const historico = JSON.parse(historicoStr);
+                    const ultimaBusca = historico.find(h => h.categoria === 'personalizado');
+                    if (ultimaBusca && ultimaBusca.texto) {
+                        // Tenta usar cache primeiro antes de chamar API
+                        const cacheKey = `api_frases_personalizado`;
+                        try {
+                            const cached = localStorage.getItem(cacheKey);
+                            if (cached) {
+                                const frasesCache = JSON.parse(cached);
+                                // Filtra frases recentes para evitar repetição
+                                const frasesDisponiveis = filtrarFrasesRecentes(frasesCache, 'personalizado');
+                                
+                                if (frasesDisponiveis.length > 0) {
+                                    // Usa uma frase aleatória do cache que não foi usada recentemente
+                                    const randomIndex = Math.floor(Math.random() * frasesDisponiveis.length);
+                                    [frase, referencia] = frasesDisponiveis[randomIndex];
+                                } else if (frasesCache.length > 0) {
+                                    // Se todas foram usadas, escolhe qualquer uma
+                                    const randomIndex = Math.floor(Math.random() * frasesCache.length);
+                                    [frase, referencia] = frasesCache[randomIndex];
+                                }
+                            }
+                        } catch (e) {
+                            // Se não tem cache, gera nova
+                        }
+                        
+                        // Se não encontrou no cache, gera nova
+                        if (!frase) {
+                            try {
+                                const resultado = await Promise.race([
+                                    gerarFrasePersonalizada(ultimaBusca.texto),
+                                    timeoutPromise
+                                ]);
+                                
+                                if (resultado && resultado[0] && resultado[1] && resultado[0] !== 'timeout') {
+                                    [frase, referencia] = resultado;
+                                } else {
+                                    // Se falhou ou timeout, tenta usar qualquer frase do cache ou fallback
+                                    const cached = localStorage.getItem(cacheKey);
+                                    if (cached) {
+                                        const frasesCache = JSON.parse(cached);
+                                        if (frasesCache.length > 0) {
+                                            const randomIndex = Math.floor(Math.random() * frasesCache.length);
+                                            [frase, referencia] = frasesCache[randomIndex];
+                                        }
+                                    }
+                                }
+                            } catch (e) {
+                                console.warn('Erro ao gerar frase personalizada:', e);
+                                // Tenta cache como fallback
+                                const cached = localStorage.getItem(cacheKey);
+                                if (cached) {
+                                    const frasesCache = JSON.parse(cached);
+                                    if (frasesCache.length > 0) {
+                                        const randomIndex = Math.floor(Math.random() * frasesCache.length);
+                                        [frase, referencia] = frasesCache[randomIndex];
+                                    }
+                                }
+                            }
+                        } else {
+                            // Se usou do cache, gera nova em background para sensação de infinito
+                            gerarFrasePersonalizada(ultimaBusca.texto).catch(() => {});
+                        }
+                    } else {
+                        const resultado = await gerarFrasePersonalizada('este pensamento');
+                        if (resultado && resultado[0] && resultado[1]) {
+                            [frase, referencia] = resultado;
+                        }
+                    }
+                } else {
+                    const resultado = await gerarFrasePersonalizada('este pensamento');
+                    if (resultado && resultado[0] && resultado[1]) {
+                        [frase, referencia] = resultado;
+                    }
+                }
+            } catch (e) {
+                console.warn('Erro ao gerar frase personalizada:', e);
+                try {
+                    const resultado = await gerarFrasePersonalizada('este pensamento');
+                    if (resultado && resultado[0] && resultado[1]) {
+                        [frase, referencia] = resultado;
+                    }
+                } catch (e2) {
+                    console.warn('Erro no retry:', e2);
+                }
+            }
+            
+            // Se ainda não tem frase válida, usa fallback
+            if (!frase || !referencia) {
+                try {
+                    const historicoStr = localStorage.getItem('historico_buscas');
+                    if (historicoStr) {
+                        const historico = JSON.parse(historicoStr);
+                        const ultimaBusca = historico.find(h => h.categoria === 'personalizado');
+                        if (ultimaBusca && ultimaBusca.texto) {
+                            const categoriaSimilar = tentarEncontrarCategoriaSimilar(ultimaBusca.texto);
+                            if (categoriaSimilar && categoriaSimilar !== 'personalizado') {
+                                const resultado = await obterFrase(categoriaSimilar);
+                                if (resultado && resultado[0] && resultado[1]) {
+                                    [frase, referencia] = resultado;
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Erro no fallback:', e);
+                }
+            }
+            
+            // Último fallback se ainda não tem frase
+            if (!frase || !referencia) {
+                frase = "Não foi possível gerar uma frase agora. Tente novamente.";
+                referencia = "Sistema";
+            }
+            
+            // Salva frase recente para evitar repetição
+            if (frase && referencia) {
+                salvarFraseRecente('personalizado', [frase, referencia]);
+            }
+            
+            // Salva frase atual para poder guardar depois
+            fraseAtual = [frase, referencia, 'personalizado'];
+            
+            // SEMPRE gera nova frase personalizada em background para sensação de infinito
+            try {
+                const historicoStr = localStorage.getItem('historico_buscas');
+                if (historicoStr) {
+                    const historico = JSON.parse(historicoStr);
+                    const ultimaBusca = historico.find(h => h.categoria === 'personalizado');
+                    if (ultimaBusca && ultimaBusca.texto) {
+                        gerarFrasePersonalizada(ultimaBusca.texto).catch(() => {});
+                    }
+                }
+            } catch (e) {
+                // Ignora erros
+            }
+        } else {
+            // Usa categoria normal (já usa cache internamente e evita repetição)
+            try {
+                // Usa Promise.race para garantir timeout
+                const resultado = await Promise.race([
+                    obterFrase(categoriaAtual),
+                    timeoutPromise
+                ]);
+                
+                if (resultado && resultado[0] && resultado[1] && resultado[0] !== 'timeout') {
+                    [frase, referencia] = resultado;
+                    fraseAtual = [frase, referencia, categoriaAtual];
+                } else {
+                    // Timeout ou resultado inválido - usa arsenal interno diretamente
+                    if (BIBLIOTECA[categoriaAtual] && BIBLIOTECA[categoriaAtual].length > 0) {
+                        const frasesDisponiveis = filtrarFrasesRecentes(BIBLIOTECA[categoriaAtual], categoriaAtual);
+                        if (frasesDisponiveis.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * frasesDisponiveis.length);
+                            [frase, referencia] = frasesDisponiveis[randomIndex];
+                        } else if (BIBLIOTECA[categoriaAtual].length > 0) {
+                            const randomIndex = Math.floor(Math.random() * BIBLIOTECA[categoriaAtual].length);
+                            [frase, referencia] = BIBLIOTECA[categoriaAtual][randomIndex];
+                        }
+                    }
+                    
+                    if (!frase || !referencia) {
+                        frase = "Não foi possível gerar uma frase agora. Tente novamente.";
+                        referencia = "Sistema";
+                    }
+                    fraseAtual = [frase, referencia, categoriaAtual];
+                }
+            } catch (e) {
+                console.error('Erro ao obter frase:', e);
+                // Fallback direto para arsenal interno
+                if (BIBLIOTECA[categoriaAtual] && BIBLIOTECA[categoriaAtual].length > 0) {
+                    const randomIndex = Math.floor(Math.random() * BIBLIOTECA[categoriaAtual].length);
+                    [frase, referencia] = BIBLIOTECA[categoriaAtual][randomIndex];
+                    fraseAtual = [frase, referencia, categoriaAtual];
+                } else {
+                    frase = "Não foi possível gerar uma frase agora. Tente novamente.";
+                    referencia = "Sistema";
+                    fraseAtual = [frase, referencia, categoriaAtual];
+                }
+            }
+        }
+        
+        // Garante que sempre tem frase antes de atualizar
+        if (!frase || !referencia) {
+            frase = frase || "Não foi possível gerar uma frase agora. Tente novamente.";
+            referencia = referencia || "Sistema";
+        }
+        
+        // Atualiza botão de guardar
+        atualizarBotaoGuardar();
+        
+        // Anima a nova frase
+        conteudo.classList.remove('fade-in');
+        void conteudo.offsetWidth;
+        conteudo.classList.add('fade-in');
+        conteudo.innerHTML = `<p class="frase">"${frase}"</p><p class="referencia">${referencia}</p><p style="font-size: 0.85rem; color: var(--muted); margin-top: 16px; font-style: italic; text-align: center;">💭 Reflita sobre esta frase antes de buscar outra. A sabedoria espiritual requer meditação, não consumo rápido.</p>`;
+        
+        // Reabilita o botão após um delay para encorajar reflexão
+        if (btnGerar) {
+            // Reabilita após 15 segundos (tempo para reflexão e IA gerar nova frase)
+            setTimeout(() => {
+                btnGerar.disabled = false;
+                btnGerar.textContent = 'Gerar outra frase para este sentimento';
+                btnGerar.style.opacity = '1';
+                btnGerar.style.cursor = 'pointer';
+            }, 15000);
+        }
+    }
+    
+    // Função para guardar frase favorita
+    function guardarFrase() {
+        if (!fraseAtual || !fraseAtual[0] || !fraseAtual[1]) {
+            return;
+        }
+        
+        try {
+            const key = 'frases_favoritas';
+            let favoritas = [];
+            const favoritasStr = localStorage.getItem(key);
+            if (favoritasStr) {
+                favoritas = JSON.parse(favoritasStr);
+            }
+            
+            // Verifica se já está guardada (suporta ambos os formatos: array e objeto)
+            const jaExiste = favoritas.some(f => {
+                if (Array.isArray(f)) {
+                    return f[0] === fraseAtual[0] && f[1] === fraseAtual[1];
+                } else {
+                    return f.frase === fraseAtual[0] && f.referencia === fraseAtual[1];
+                }
+            });
+            
+            if (!jaExiste) {
+                // Adiciona nova frase favorita
+                favoritas.unshift({
+                    frase: fraseAtual[0],
+                    referencia: fraseAtual[1],
+                    categoria: fraseAtual[2] || categoriaAtual || 'desconhecida',
+                    timestamp: Date.now()
+                });
+                
+                localStorage.setItem(key, JSON.stringify(favoritas));
+                
+                // Atualiza botão
+                atualizarBotaoGuardar();
+                
+                // Feedback visual
+                const btn = document.getElementById('btn-guardar-frase');
+                if (btn) {
+                    btn.textContent = '✓ Frase guardada!';
+                    btn.classList.add('guardada');
+                    setTimeout(() => {
+                        btn.textContent = '⭐ Guardar esta frase';
+                        btn.classList.remove('guardada');
+                    }, 2000);
+                }
+            } else {
+                // Remove se já estava guardada (suporta ambos os formatos)
+                favoritas = favoritas.filter(f => {
+                    if (Array.isArray(f)) {
+                        return !(f[0] === fraseAtual[0] && f[1] === fraseAtual[1]);
+                    } else {
+                        return !(f.frase === fraseAtual[0] && f.referencia === fraseAtual[1]);
+                    }
+                });
+                localStorage.setItem(key, JSON.stringify(favoritas));
+                atualizarBotaoGuardar();
+            }
+        } catch (e) {
+            console.warn('Erro ao guardar frase favorita:', e);
+        }
+    }
+    
+    // Função para atualizar estado do botão de guardar
+    function atualizarBotaoGuardar() {
+        const btn = document.getElementById('btn-guardar-frase');
+        if (!btn) return;
+        
+        if (!fraseAtual || !fraseAtual[0]) {
+            btn.style.display = 'none';
+            return;
+        }
+        
+        btn.style.display = 'block';
+        
+        // Verifica se já está guardada (suporta ambos os formatos)
+        try {
+            const favoritasStr = localStorage.getItem('frases_favoritas');
+            if (favoritasStr) {
+                const favoritas = JSON.parse(favoritasStr);
+                const jaExiste = favoritas.some(f => {
+                    if (Array.isArray(f)) {
+                        return f[0] === fraseAtual[0] && f[1] === fraseAtual[1];
+                    } else {
+                        return f.frase === fraseAtual[0] && f.referencia === fraseAtual[1];
+                    }
+                });
+                
+                if (jaExiste) {
+                    btn.textContent = '✓ Frase guardada';
+                    btn.classList.add('guardada');
+                } else {
+                    btn.textContent = '⭐ Guardar esta frase';
+                    btn.classList.remove('guardada');
+                }
+            } else {
+                btn.textContent = '⭐ Guardar esta frase';
+                btn.classList.remove('guardada');
+            }
+        } catch (e) {
+            btn.textContent = '⭐ Guardar esta frase';
+            btn.classList.remove('guardada');
+        }
+        
+        atualizarBotaoReportar();
+    }
+    
+    // Atualiza o link "Reportar frase inadequada" com a frase atual (abre WhatsApp com mensagem pré-preenchida)
+    function atualizarBotaoReportar() {
+        const btn = document.getElementById('btn-reportar-frase');
+        if (!btn) return;
+        
+        if (!fraseAtual || !fraseAtual[0]) {
+            btn.href = '#';
+            btn.style.opacity = '0.5';
+            btn.style.pointerEvents = 'none';
+            return;
+        }
+        
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+        const texto = `Gostaria de reportar uma frase inadequada no Antirrético:\n\nFrase: "${fraseAtual[0]}"\nAtribuída a: ${fraseAtual[1] || '—'}`;
+        btn.href = `https://api.whatsapp.com/send?phone=5561996449753&text=${encodeURIComponent(texto)}`;
+    }
+
+    // Função para voltar à lista
+    function voltarParaLista() {
+        const fullscreen = document.getElementById('fullscreen-frase');
+        fullscreen.classList.remove('active');
+        document.body.style.overflow = '';
+        categoriaAtual = null;
+    }
+
+    // Função antiga mantida para compatibilidade (se necessário)
+    function gerar(cat) {
+        mostrarFrase(cat);
+    }
+
+    // Função para gerar frase via API Groq
+    async function gerarFraseAPI(categoria) {
+        const apiKey = localStorage.getItem('groq_api_key');
+        if (!apiKey) {
+            return null;
+        }
+
+        try {
+            const nomeCategoria = NOMES_CATEGORIAS[categoria] || categoria;
+            
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [{
+                        role: 'system',
+                        content: 'Você é um assistente espiritual cristão ortodoxo/católico. Você SÓ produz frases enraizadas na Tradição da Igreja: Sagrada Escritura, Padres do Deserto, Santos e Doutores da Igreja, liturgia e orações tradicionais. Evite totalmente frases genéricas de autoajuda, slogans motivacionais ou conselhos vagos. Use linguagem formal, bíblica e patrística, com sabor de teologia ascética e mística.'
+                    }, {
+                        role: 'user',
+                        content: `Gere uma frase espiritual cristã profundamente enraizada na Tradição para combater ${nomeCategoria}.
+
+REQUISITOS:
+- Priorize uma citação REAL da Bíblia, de um santo clássico (por exemplo: Santo Agostinho, São Tomás de Aquino, Santa Teresinha, São João da Cruz, Santa Teresa d’Ávila) ou dos Padres do Deserto (por exemplo: Evágrio Pôntico, João Cassiano). Se for uma paráfrase, mantenha claramente o tom bíblico/patrístico.
+- NÃO escreva frases genéricas, slogans ou frases muito óbvias, do tipo "Corpo casto, alma pura" ou "Deus te ama e pronto". A frase deve trazer verdadeira sabedoria espiritual concreta.
+- Linguagem formal, reverente, em português, própria de um livro clássico de espiritualidade (teologia ascética e mística).
+- Tamanho: entre 60 e 160 caracteres (densa, mas não longa demais).
+- Referência bíblica (ex: "Mt 11,29", "Sl 22,1") OU de santo (ex: "S. Agostinho", "S. Tomás de Aquino", "S. João da Cruz") OU tipo (ex: "Oração", "Jaculatória", "Hino litúrgico").
+
+FORMATO DE RESPOSTA:
+Retorne APENAS no formato: "FRASE", "REFERÊNCIA"
+
+Exemplo: "Aprendei de mim, que sou manso e humilde de coração.", "Mt 11,29"`
+                    }],
+                    temperature: 0.75,
+                    max_tokens: 120
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const content = data.choices[0].message.content.trim();
+            
+            // Parse da resposta - tenta vários formatos
+            let match = content.match(/^"([^"]+)"\s*,\s*"([^"]+)"$/);
+            if (!match) {
+                // Tenta formato sem aspas externas
+                match = content.match(/^([^"]+)\s*,\s*"([^"]+)"$/);
+            }
+            if (!match) {
+                // Tenta formato com aspas simples
+                match = content.match(/^'([^']+)'\s*,\s*'([^']+)'$/);
+            }
+            if (!match) {
+                // Última tentativa: divide por vírgula
+                const parts = content.split(/,\s*/);
+                if (parts.length >= 2) {
+                    match = [null, parts[0].replace(/^["']|["']$/g, ''), parts.slice(1).join(', ').replace(/^["']|["']$/g, '')];
+                }
+            }
+            
+            if (match && match[1] && match[2]) {
+                const frase = match[1].trim();
+                const referencia = match[2].trim();
+                
+                // Validação básica
+                // Exige frase com um mínimo de densidade (evita frases genéricas e curtas demais)
+                // Reduzido para 40 caracteres para ser mais flexível, mas ainda rejeita frases muito curtas
+                if (frase.length >= 40 && referencia.length > 0 && frase.length <= 220) {
+                    // Salva no cache de frases geradas pela API
+                    const cacheKey = `api_frases_${categoria}`;
+                    let frasesCache = [];
+                    try {
+                        const cached = localStorage.getItem(cacheKey);
+                        if (cached) {
+                            frasesCache = JSON.parse(cached);
+                        }
+                    } catch (e) {
+                        console.warn('Erro ao ler cache de frases API:', e);
+                    }
+                    
+                    // Adiciona nova frase ao cache (evita duplicatas)
+                    const jaExiste = frasesCache.some(f => f[0] === frase);
+                    if (!jaExiste) {
+                        frasesCache.push([frase, referencia]);
+                        // Mantém apenas últimas 200 frases geradas (aumentado para sensação de infinito)
+                        if (frasesCache.length > 200) {
+                            frasesCache = frasesCache.slice(-200);
+                        }
+                        localStorage.setItem(cacheKey, JSON.stringify(frasesCache));
+                    }
+                    
+                    return [frase, referencia];
+                } else {
+                    // Se a frase foi rejeitada por ser muito curta, loga mas não bloqueia completamente
+                    console.warn('Frase rejeitada por validação (tamanho:', frase.length, 'caracteres):', frase);
+                }
+            }
+            
+            console.warn('Formato de resposta da API não reconhecido ou inválido:', content);
+            return null;
+        } catch (error) {
+            console.error('Erro ao gerar frase via API:', error);
+            return null;
+        }
+    }
+
+    function toggleModal() {
+        const m = document.getElementById('modal-info');
+        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    }
+    
+    // Função para mostrar frases favoritas
+    function mostrarFavoritas() {
+        const modal = document.getElementById('modal-favoritas');
+        const lista = document.getElementById('lista-favoritas');
+        
+        if (!modal || !lista) return;
+        
+        // Carrega frases favoritas
+        try {
+            const favoritasStr = localStorage.getItem('frases_favoritas');
+            const favoritas = favoritasStr ? JSON.parse(favoritasStr) : [];
+            
+            // Normaliza formato antigo (array) para formato novo (objeto)
+            const favoritasNormalizadas = favoritas.map(fav => {
+                if (Array.isArray(fav)) {
+                    return {
+                        frase: fav[0],
+                        referencia: fav[1],
+                        categoria: fav[2] || 'desconhecida',
+                        timestamp: Date.now()
+                    };
+                }
+                return fav;
+            });
+            
+            // Salva formato normalizado se houve mudança
+            if (favoritas.some(f => Array.isArray(f))) {
+                localStorage.setItem('frases_favoritas', JSON.stringify(favoritasNormalizadas));
+            }
+            
+            if (favoritasNormalizadas.length === 0) {
+                lista.innerHTML = '<p style="color: var(--muted); font-style: italic; text-align: center; padding: 40px 20px;">Nenhuma frase guardada ainda.<br>Guarde frases que tocaram seu coração usando o botão ⭐ na tela de frase.</p>';
+            } else {
+                lista.innerHTML = favoritasNormalizadas.map((fav, index) => {
+                    // Escapa caracteres especiais para uso em atributos onclick
+                    const fraseEscapada = JSON.stringify(fav.frase);
+                    const referenciaEscapada = JSON.stringify(fav.referencia);
+                    const categoriaEscapada = JSON.stringify(fav.categoria || '');
+                    return `
+                        <div class="favorita-item" onclick="verFraseFavorita(${fraseEscapada}, ${referenciaEscapada}, ${categoriaEscapada})">
+                            <p class="favorita-frase">"${fav.frase.replace(/"/g, '&quot;')}"</p>
+                            <p class="favorita-referencia">${fav.referencia.replace(/"/g, '&quot;')}</p>
+                            ${fav.categoria && fav.categoria !== 'desconhecida' ? `<p class="favorita-categoria">${(NOMES_CATEGORIAS[fav.categoria] || fav.categoria).replace(/"/g, '&quot;')}</p>` : ''}
+                            <div class="favorita-actions">
+                                <button class="btn-remover-favorita" onclick="event.stopPropagation(); removerFavorita(${fraseEscapada}, ${referenciaEscapada})">Remover</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            modal.classList.add('active');
+        } catch (e) {
+            console.error('Erro ao carregar favoritas:', e);
+            lista.innerHTML = '<p style="color: var(--muted); text-align: center; padding: 20px;">Erro ao carregar frases guardadas.</p>';
+        }
+    }
+    
+    // Função para fechar modal de favoritas
+    function fecharFavoritas() {
+        const modal = document.getElementById('modal-favoritas');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+    }
+    
+    // Função para ver frase favorita em fullscreen
+    function verFraseFavorita(frase, referencia, categoria) {
+        fecharFavoritas();
+        
+        categoriaAtual = categoria || null;
+        fraseAtual = [frase, referencia, categoria || 'favorita'];
+        
+        const fullscreen = document.getElementById('fullscreen-frase');
+        const conteudo = document.getElementById('conteudo-frase-fullscreen');
+        const categoriaLabel = document.getElementById('categoria-label-fullscreen');
+        
+        if (fullscreen && conteudo && categoriaLabel) {
+            categoriaLabel.textContent = categoria && categoria !== 'favorita' && categoria !== 'desconhecida' ? (NOMES_CATEGORIAS[categoria] || categoria) : 'Frase Guardada';
+            fullscreen.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            conteudo.classList.remove('fade-in');
+            void conteudo.offsetWidth;
+            conteudo.classList.add('fade-in');
+            conteudo.innerHTML = `<p class="frase">"${frase.replace(/"/g, '&quot;')}"</p><p class="referencia">${referencia.replace(/"/g, '&quot;')}</p>`;
+            
+            atualizarBotaoGuardar();
+        }
+    }
+    
+    // Função para remover frase favorita
+    function removerFavorita(frase, referencia) {
+        if (!confirm('Deseja remover esta frase das guardadas?')) {
+            return;
+        }
+        
+        try {
+            const favoritasStr = localStorage.getItem('frases_favoritas');
+            if (favoritasStr) {
+                let favoritas = JSON.parse(favoritasStr);
+                // Remove suportando ambos os formatos
+                favoritas = favoritas.filter(f => {
+                    if (Array.isArray(f)) {
+                        return !(f[0] === frase && f[1] === referencia);
+                    } else {
+                        return !(f.frase === frase && f.referencia === referencia);
+                    }
+                });
+                localStorage.setItem('frases_favoritas', JSON.stringify(favoritas));
+                
+                // Recarrega a lista
+                mostrarFavoritas();
+                
+                // Atualiza botão se a frase atual foi removida
+                if (fraseAtual && fraseAtual[0] === frase && fraseAtual[1] === referencia) {
+                    atualizarBotaoGuardar();
+                }
+            }
+        } catch (e) {
+            console.error('Erro ao remover favorita:', e);
+        }
+    }
+</script>
+</body>
+</html>

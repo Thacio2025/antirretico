@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#121e2a"/>
+
+  <!-- Cruz dourada, sóbria e centralizada -->
+  <g fill="#c5a02e">
+    <!-- haste vertical -->
+    <rect x="236" y="92" width="40" height="328" rx="10" />
+    <!-- haste horizontal -->
+    <rect x="128" y="236" width="256" height="40" rx="10" />
+  </g>
+</svg>

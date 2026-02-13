@@ -1,0 +1,12 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Netlify (estado local do link; o deploy usa o que está no repositório)
+.netlify/state.json
+
+# IDE / Editor
+.idea
+.vscode
+*.swp
+*.swo
