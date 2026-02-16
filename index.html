@@ -377,10 +377,20 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--paper);
+  background: #1a2a1f url('img/frase-fundo.png') no-repeat center center;
+  background-size: cover;
   padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
   -webkit-tap-highlight-color: transparent;
   overflow-y: auto;
+}
+
+#fullscreen-frase::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20, 35, 25, 0.35) 0%, rgba(15, 25, 20, 0.5) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 #fullscreen-frase.active {
@@ -396,19 +406,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 #fullscreen-frase .frase-fullscreen .frase {
   font-size: clamp(1.6rem, 6vw, 2.4rem);
   line-height: 1.5;
   margin-bottom: 24px;
-  color: var(--ink);
+  color: rgba(255, 252, 245, 0.98);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 #fullscreen-frase .frase-fullscreen .referencia {
   font-size: clamp(0.85rem, 2.5vw, 1rem);
   margin-top: 20px;
-  opacity: 0.85;
+  color: rgba(235, 228, 215, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 #fullscreen-frase .frase-fullscreen .categoria-label {
@@ -417,21 +431,24 @@ body {
   font-size: clamp(0.8rem, 2vw, 0.9rem);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: rgba(230, 215, 170, 0.95);
   font-weight: 600;
   padding: 8px 14px;
-  border: 1px solid rgba(184, 149, 46, 0.3);
+  border: 1px solid rgba(200, 185, 150, 0.5);
   border-radius: var(--radius);
+  background: rgba(30, 45, 35, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #fullscreen-frase .frase-fullscreen .explicacao-mapeamento {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: rgba(220, 210, 195, 0.9);
   font-style: italic;
   margin-top: 8px;
   margin-bottom: 16px;
   line-height: 1.5;
   padding: 0 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #fullscreen-frase .frase-fullscreen {
@@ -452,6 +469,8 @@ body {
   width: 100%;
   max-width: 400px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-fullscreen {
@@ -470,6 +489,49 @@ body {
   text-align: center;
   transition: background 0.2s ease, transform 0.1s ease;
   pointer-events: auto;
+}
+
+/* Na tela da frase (fundo paisagem): botões em estilo glass para combinar */
+#fullscreen-frase .btn-fullscreen {
+  background: rgba(235, 228, 215, 0.25);
+  border-color: rgba(200, 185, 150, 0.5);
+  color: rgba(255, 252, 245, 0.98);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#fullscreen-frase .btn-fullscreen:active {
+  background: rgba(235, 228, 215, 0.4);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-primary {
+  background: rgba(50, 70, 50, 0.6);
+  color: rgba(255, 252, 245, 0.98);
+  border-color: rgba(180, 165, 130, 0.5);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-primary:active {
+  background: rgba(40, 60, 40, 0.75);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-secondary {
+  background: rgba(235, 228, 215, 0.2);
+  color: rgba(255, 252, 245, 0.95);
+  border-color: rgba(200, 185, 150, 0.5);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-secondary:active {
+  background: rgba(235, 228, 215, 0.35);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-favorite {
+  background: rgba(200, 175, 100, 0.25);
+  color: rgba(255, 248, 220, 0.98);
+  border-color: rgba(200, 185, 150, 0.5);
+}
+
+#fullscreen-frase .btn-fullscreen.btn-favorite:active,
+#fullscreen-frase .btn-fullscreen.btn-favorite.guardada {
+  background: rgba(200, 175, 100, 0.35);
 }
 
 .btn-fullscreen:active {
@@ -535,6 +597,13 @@ body {
   padding: 0 12px;
 }
 
+#fullscreen-frase .aviso-citacao {
+  color: rgba(220, 210, 195, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
 .btn-reportar-frase {
   display: inline-block;
   margin-top: 12px;
@@ -549,6 +618,20 @@ body {
 
 .btn-reportar-frase:hover {
   color: var(--ink);
+}
+
+#fullscreen-frase .btn-reportar-frase {
+  color: rgba(220, 210, 195, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#fullscreen-frase .btn-reportar-frase:hover {
+  color: rgba(255, 252, 245, 0.98);
+}
+
+#fullscreen-frase .frase-placeholder {
+  color: rgba(255, 252, 245, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .frase {
