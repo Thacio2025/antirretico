@@ -15,7 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
 
     <meta property="og:locale" content="pt_BR">
     <meta property="og:type" content="website">
@@ -93,7 +93,7 @@ body {
   min-height: 100dvh;
 }
 
-/* ---- Header (fixo) ---- */
+/* ---- Header (fixo, tom pedra/creme sobre o fundo) ---- */
 .app-header {
   position: fixed;
   top: 0;
@@ -101,8 +101,10 @@ body {
   right: 0;
   z-index: 100;
   width: 100%;
-  background: var(--paper);
-  border-bottom: 1px solid var(--border);
+  background: rgba(235, 228, 215, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(180, 165, 130, 0.4);
   padding-top: max(24px, calc(16px + env(safe-area-inset-top)));
   padding-left: max(18px, env(safe-area-inset-left));
   padding-right: max(18px, env(safe-area-inset-right));
@@ -115,27 +117,54 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   margin: 0 auto;
   text-align: center;
 }
 
-.app-header h1 {
-  margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(2.5rem, 8vw, 3.8rem);
-  letter-spacing: 0.02em;
-  color: var(--ink);
+/* Título em arco com letras medievais */
+.title-arc {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
-.app-header .subtitle {
-  font-size: clamp(1rem, 3.5vw, 1.4rem);
-  color: var(--gold);
-  margin: 6px 0 0;
+.title-arc .arc-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.title-arc .arc-text {
+  font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  font-size: 2rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  fill: url(#title-gold);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.app-header .subtitle,
+.app-header .subtitle-medieval {
+  font-family: "Cinzel", serif;
+  font-size: clamp(0.75rem, 2.8vw, 1rem);
+  color: #b8982e;
+  margin: 2px 0 0;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /* Mobile: header e conteúdo compactos para caber em uma tela */
@@ -149,12 +178,17 @@ body {
     gap: 6px;
   }
   
-  .app-header h1 {
-    font-size: clamp(1.5rem, 6vw, 2rem);
+  .title-arc {
+    max-width: 260px;
   }
   
-  .app-header .subtitle {
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  .title-arc .arc-text {
+    font-size: 1.5rem;
+  }
+  
+  .app-header .subtitle,
+  .app-header .subtitle-medieval {
+    font-size: clamp(0.65rem, 2.2vw, 0.8rem);
     margin: 2px 0 0;
   }
   
@@ -181,9 +215,10 @@ body {
   border-radius: 999px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--ink);
+  border: 1px solid rgba(180, 165, 130, 0.6);
+  background: rgba(235, 228, 215, 0.5);
+  color: #6b5b45;
+  font-family: "Cinzel", serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
@@ -191,7 +226,7 @@ body {
 }
 
 .info-icon:active {
-  background: rgba(10, 20, 29, 0.04);
+  background: rgba(220, 210, 195, 0.7);
 }
 
 .header-actions {
@@ -208,24 +243,25 @@ body {
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  border: 1px solid rgba(184, 149, 46, 0.5);
-  background: rgba(184, 149, 46, 0.12);
-  color: var(--gold);
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.8rem;
+  border: 1px solid rgba(180, 165, 130, 0.6);
+  background: rgba(235, 228, 215, 0.5);
+  color: #8b7355;
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   border-radius: var(--radius);
   cursor: pointer;
 }
 
 .header-btn-favoritas:hover {
-  background: rgba(184, 149, 46, 0.2);
-  border-color: var(--gold);
+  background: rgba(235, 228, 215, 0.75);
+  border-color: rgba(180, 165, 130, 0.85);
+  color: #6b5b45;
 }
 
 .header-btn-favoritas:active {
-  background: rgba(184, 149, 46, 0.25);
+  background: rgba(220, 210, 195, 0.8);
 }
 
 .header-favoritas-icon {
@@ -252,7 +288,7 @@ body {
   background: rgba(184, 149, 46, 0.2);
 }
 
-/* ---- Área principal ---- */
+/* ---- Área principal com fundo do mosteiro ---- */
 .app-main {
   flex: 1;
   overflow-x: hidden;
@@ -262,6 +298,19 @@ body {
   padding-left: max(18px, env(safe-area-inset-left));
   padding-right: max(18px, env(safe-area-inset-right));
   padding-bottom: max(18px, env(safe-area-inset-bottom));
+  position: relative;
+  min-height: calc(100dvh - var(--header-height, 0px));
+  background: var(--paper) url('img/mosteiro-fundo.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.app-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(40, 50, 35, 0.2) 0%, rgba(25, 35, 30, 0.35) 100%);
+  pointer-events: none;
 }
 
 .container {
@@ -272,6 +321,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  min-height: calc(100dvh - var(--header-height, 0px) - 52px);
 }
 
 @media (max-width: 768px) {
@@ -522,7 +575,7 @@ body {
   font-weight: 600;
 }
 
-/* ---- Campo de Busca / Texto ---- */
+/* ---- Campo de Busca / Texto (glass sobre o fundo) ---- */
 .search-container {
   width: 100%;
   max-width: 560px;
@@ -547,12 +600,19 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--paper);
-  border: 2px solid var(--border);
+  background: rgba(235, 228, 215, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 210, 190, 0.5);
   border-radius: var(--radius);
   resize: vertical;
-  transition: border-color 0.2s ease, min-height 0.2s ease;
+  transition: border-color 0.2s ease, min-height 0.2s ease, background 0.2s ease;
   scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+#search-input::placeholder {
+  color: rgba(255, 252, 245, 0.9);
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
@@ -571,35 +631,44 @@ body {
 
 #search-input:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: rgba(200, 185, 150, 0.7);
+  background: rgba(235, 228, 215, 0.35);
 }
 
-#search-input::placeholder {
-  color: var(--muted);
-  font-style: italic;
-}
-
-/* Botão acima da caixa de texto */
+/* Botão central em tom pedra/creme sobre o fundo do mosteiro */
 .search-button {
   width: 100%;
   max-width: 560px;
   margin: 0 0 14px 0;
-  min-height: 52px;
-  padding: 14px 20px;
-  font-family: Inter, system-ui, sans-serif;
+  min-height: 56px;
+  padding: 16px 24px;
+  font-family: "Cinzel", serif;
   font-weight: 600;
   font-size: 1rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: var(--navy);
-  color: var(--paper);
-  border: 1px solid rgba(184, 149, 46, 0.3);
+  background: rgba(235, 228, 215, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(255, 252, 240, 0.98);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(200, 185, 150, 0.5);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
   position: relative;
   z-index: 10;
   display: block;
+}
+
+.search-button:hover {
+  background: rgba(235, 228, 215, 0.35);
+  border-color: rgba(200, 185, 150, 0.7);
+}
+
+.search-button:active {
+  background: rgba(235, 228, 215, 0.28);
+  transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
@@ -620,14 +689,10 @@ body {
   }
 }
 
-.search-button:active {
-  background: #061017;
-  transform: scale(0.98);
-}
-
 .search-button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Link "Ver frases guardadas" logo abaixo do botão de busca */
@@ -774,10 +839,12 @@ body {
   }
 }
 
-/* ---- CTA / Links ---- */
+/* ---- CTA / Links (tom pedra/creme sobre o fundo) ---- */
 .cta-box {
-  background: var(--paper-soft);
-  border: 1px solid var(--border);
+  background: rgba(235, 228, 215, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 185, 150, 0.45);
   border-radius: var(--radius);
   padding: 16px 14px;
   text-align: center;
@@ -786,6 +853,24 @@ body {
   margin: 0 auto;
   margin-top: 12px;
   margin-bottom: 0;
+}
+
+.cta-box .cta-text {
+  color: rgba(255, 252, 240, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.06em;
+}
+
+.cta-box .btn-link-wa.bg-whatsapp {
+  background: rgba(235, 228, 215, 0.2);
+  border-color: rgba(200, 185, 150, 0.55);
+  color: rgba(255, 252, 240, 0.98);
+}
+
+.cta-box .btn-link-wa.bg-whatsapp:hover {
+  background: rgba(235, 228, 215, 0.35);
+  border-color: rgba(200, 185, 150, 0.75);
 }
 
 @media (max-width: 768px) {
@@ -845,7 +930,10 @@ footer {
   text-align: center;
   padding: 14px 8px 2px;
   font-size: 0.78rem;
-  color: var(--muted);
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.08em;
+  color: rgba(235, 228, 215, 0.88);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -1379,8 +1467,23 @@ footer {
 
 <header class="app-header">
     <div class="title-wrapper">
-        <h1>Antirrético</h1>
-        <p class="subtitle">Remédio Espiritual Imediato</p>
+        <h1 class="visually-hidden">Antirrético</h1>
+        <div class="title-arc" aria-hidden="true">
+            <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="arc-svg">
+                <defs>
+                    <path id="arc-path" d="M 30 72 A 170 170 0 0 0 370 72" fill="none"/>
+                    <linearGradient id="title-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#c9a227"/>
+                        <stop offset="50%" style="stop-color:#e8d5a3"/>
+                        <stop offset="100%" style="stop-color:#c9a227"/>
+                    </linearGradient>
+                </defs>
+                <text class="arc-text">
+                    <textPath href="#arc-path" startOffset="50%" text-anchor="middle">Antirrético</textPath>
+                </text>
+            </svg>
+        </div>
+        <p class="subtitle subtitle-medieval">Remédio Espiritual Imediato</p>
         <div class="header-actions">
             <div class="info-icon" onclick="toggleModal()" title="Sobre o Antirrético">i</div>
             <button type="button" class="header-btn-favoritas" onclick="mostrarFavoritas()" title="Ver frases guardadas" id="btn-favoritos">
