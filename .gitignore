@@ -10,3 +10,27 @@ Thumbs.db
 .vscode
 *.swp
 *.swo
+
+# --- backup automatico: nao subir segredo nem lixo ---
+.env
+.env.*
+!.env.example
+*key*.json
+*token*.json
+*credential*
+*.pem
+*.p12
+service-account*.json
+node_modules/
+.next/
+dist/
+build/
+.cache/
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.log
+logs/
+.DS_Store
+.netlify/
